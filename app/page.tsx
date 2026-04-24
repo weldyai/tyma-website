@@ -270,15 +270,17 @@ function Header() {
             borderColor: "var(--glass-border)",
           }}
         >
-          {NAV_LINKS.map(l => (
-            <a
-              key={l.href}
-              href={l.href}
-              onClick={() => setMobileOpen(false)}
-              style={{ fontFamily: "var(--font-body)", fontSize: "1rem", color: "var(--t0)", fontWeight: 400, letterSpacing: "0.02em" }}
-            >
-              {l.label}
-            </a>
+          {NAV_LINKS.map((l, i) => (
+            <React.Fragment key={l.href}>
+              {i > 0 && <div style={{ height: "1px", background: "rgba(192,150,80,0.18)" }} />}
+              <a
+                href={l.href}
+                onClick={() => setMobileOpen(false)}
+                style={{ fontFamily: "var(--font-body)", fontSize: "1rem", color: "var(--t0)", fontWeight: 400, letterSpacing: "0.02em" }}
+              >
+                {l.label}
+              </a>
+            </React.Fragment>
           ))}
         </motion.div>
       )}
