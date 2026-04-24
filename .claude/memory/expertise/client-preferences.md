@@ -32,3 +32,8 @@
 - À l'aise avec les concepts web (il donne des directives précises)
 - Connaît Claude Code et ses mécanismes (agents, skills, memory)
 - Valorise l'efficacité et la qualité sur la vitesse brute
+
+## 2026-04-24 — Tyma / CMS
+**Pattern/Erreur :** Sanity rejeté — trop technique, pas visuel, pas intuitif pour un utilisateur non-dev
+**Contexte :** Tyma (maquilleuse, non-dev) doit gérer galerie, témoignages, services seule
+**Règle :** Pour les clients non-techniques, toujours privilégier un CMS à édition visuelle (TinaCMS, Tina Cloud) plutôt qu'un headless CMS à schémas (Sanity, Payload). L'interface compte plus que la puissance technique.

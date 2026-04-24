@@ -11,6 +11,7 @@ Chaque agent y contribue. Brahim en bénéficie au-delà de ce projet.
 | [nextjs-patterns.md](nextjs-patterns.md) | Patterns Next.js/React/Framer Motion | frontend-dev, architecte |
 | [seo-patterns.md](seo-patterns.md) | Patterns SEO + GEO efficaces | seo-specialist, geo-specialist |
 | [client-preferences.md](client-preferences.md) | Ce que Brahim aime / n'aime pas | chef-projet, ux-designer |
+| [tinacms-patterns.md](tinacms-patterns.md) | Migration Sanity→Tina, config collections, lecture JSON, workflow Tyma | frontend-dev, architecte |
 
 ## Règle d'enrichissement
 Après chaque session significative, le chef-projet ou l'agent concerné ajoute :
