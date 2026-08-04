@@ -137,15 +137,17 @@ const jsonLd = {
       "paymentAccepted": "Cash, Virement bancaire",
       "address": {
         "@type": "PostalAddress",
+        "addressLocality": "Casablanca",
+        "addressRegion": "Grand Casablanca",
         "addressCountry": "MA",
-        "addressRegion": "Maroc",
+        "description": "Quartier Maarif, Casablanca",
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": "33.5731",
-        "longitude": "-7.5898",
-        "addressCountry": "MA",
+        "latitude": "33.5270151",
+        "longitude": "-7.6495311",
       },
+      "hasMap": "https://maps.app.goo.gl/zGSM3uYb2D1Eqwiq8",
       "areaServed": [
         { "@type": "City", "name": "Casablanca", "addressCountry": "MA" },
         { "@type": "City", "name": "Rabat", "addressCountry": "MA" },
@@ -159,14 +161,15 @@ const jsonLd = {
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-          "opens": "09:00",
-          "closes": "20:00",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+          "description": "Sur rendez-vous uniquement — 7j/7 selon disponibilités",
         },
       ],
       "sameAs": [
         "https://www.instagram.com/tymabeauty/",
-        "https://www.facebook.com/beautytyma/",
+        "https://web.facebook.com/beautytyma/",
+        "https://www.tiktok.com/@tyma.beauty",
+        "https://www.youtube.com/@TymaBeauty",
         "https://maps.app.goo.gl/zGSM3uYb2D1Eqwiq8",
       ],
       "hasOfferCatalog": {
@@ -213,8 +216,8 @@ const jsonLd = {
       },
       "aggregateRating": {
         "@type": "AggregateRating",
-        "ratingValue": "4.7",
-        "reviewCount": "30",
+        "ratingValue": "4.8",
+        "reviewCount": "41",
         "bestRating": "5",
         "worstRating": "1",
       },
@@ -260,66 +263,74 @@ const jsonLd = {
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Quels types de maquillage propose Tyma Makeup Artist ?",
+          "name": "Combien de temps dure une séance maquillage mariage avec Tyma ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Tyma propose quatre services principaux : maquillage de mariée (avec essai inclus), maquillage de soirée et gala, maquillage pour shooting photo en studio ou en extérieur, et cours de maquillage privés au Maroc.",
+            "text": "Une séance mariée avec Tyma Makeup Artist dure entre 2h30 et 3h30 selon la complexité du look et les essais réalisés en amont. Un essai préalable est recommandé pour affiner le résultat final.",
           },
         },
         {
           "@type": "Question",
-          "name": "Comment réserver Tyma Makeup Artist ?",
+          "name": "Tyma Makeup Artist se déplace-t-elle à domicile à Casablanca ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Vous pouvez réserver Tyma via WhatsApp ou Instagram. Elle répond rapidement et propose un devis personnalisé gratuit. Elle est disponible pour des déplacements à domicile ou reçoit en studio au Maroc.",
+            "text": "Oui, Tyma se déplace à domicile ou sur le lieu de l'événement à Casablanca et ses environs. Elle intervient également dans d'autres villes du Maroc (Rabat, Marrakech, Fès, Tanger) selon les disponibilités. Des frais de déplacement peuvent s'appliquer selon la distance.",
           },
         },
         {
           "@type": "Question",
-          "name": "Combien d'années d'expérience a Tyma en maquillage professionnel ?",
+          "name": "Faut-il réserver à l'avance pour un maquillage de mariage ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Tyma a plus de 11 ans d'expérience en maquillage professionnel et a maquillé plus de 500 clientes au Maroc. Elle est notée 5 étoiles par ses clientes.",
+            "text": "Absolument. Tyma Makeup Artist travaille exclusivement sur rendez-vous. Les dates de mariage se réservent 3 à 6 mois à l'avance. Pour la saison 2026, l'agenda est presque complet. Contactez Tyma dès que votre date est fixée via WhatsApp.",
           },
         },
         {
           "@type": "Question",
-          "name": "Tyma se déplace-t-elle à domicile au Maroc ?",
+          "name": "Les produits utilisés par Tyma sont-ils adaptés aux peaux sensibles ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Oui, Tyma se déplace à domicile partout au Maroc pour les mariages, soirées et shootings photo. Elle intervient à Casablanca, Rabat, Marrakech, Fès, Tanger, Agadir et dans d'autres villes selon les disponibilités.",
+            "text": "Oui, Tyma Makeup Artist utilise exclusivement des marques professionnelles hypoallergéniques. Un test cutané est systématiquement réalisé lors de l'essai pour éviter toute réaction allergique.",
           },
         },
         {
           "@type": "Question",
-          "name": "Combien coûte un maquillage de mariée au Maroc ?",
+          "name": "Tyma propose-t-elle des formations maquillage pour débutantes ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Les tarifs du maquillage de mariée varient selon la prestation, le déplacement et les détails du look souhaité. Contactez Tyma directement via WhatsApp ou Instagram pour obtenir un devis personnalisé gratuit.",
+            "text": "Oui, Tyma propose des formations individuelles et en groupe pour tous niveaux, du maquillage quotidien aux techniques professionnelles avancées. Chaque formation est personnalisée selon votre niveau et vos objectifs.",
           },
         },
         {
           "@type": "Question",
-          "name": "Quels produits utilise Tyma pour le maquillage professionnel ?",
+          "name": "Comment se déroule l'essai maquillage mariage chez Tyma ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Tyma utilise exclusivement des produits de maquillage haut de gamme et professionnels pour garantir un résultat durable, sublimant et respectueux de la peau. Les produits sont adaptés à chaque type de peau.",
+            "text": "L'essai maquillage se déroule dans le studio de Tyma Makeup Artist à Casablanca ou à domicile. Durée : environ 2h. On teste le look complet, on prend des photos sous différentes lumières et on ajuste selon vos retours.",
           },
         },
         {
           "@type": "Question",
-          "name": "Combien de temps dure une séance de maquillage avec Tyma ?",
+          "name": "Quelle est la durée de tenue du maquillage de Tyma ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Une séance de maquillage professionnel dure généralement entre 1h et 2h selon la complexité du look. Le maquillage de mariée avec essai peut nécessiter plus de temps pour peaufiner chaque détail.",
+            "text": "Avec les produits fixateurs professionnels utilisés par Tyma Makeup Artist, le maquillage tient entre 12h et 16h selon les conditions. Idéal pour les longues journées de mariage.",
           },
         },
         {
           "@type": "Question",
-          "name": "Tyma propose-t-elle des cours de maquillage pour débutantes ?",
+          "name": "Quels types de maquillage propose Tyma Makeup Artist à Casablanca ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Oui, Tyma propose des cours de maquillage privés adaptés à tous les niveaux, des débutantes aux personnes souhaitant perfectionner leurs techniques. Chaque cours est personnalisé selon vos besoins et vos objectifs.",
+            "text": "Tyma Makeup Artist propose : maquillage de mariée (essai inclus, longue tenue garantie), maquillage soirée et gala, maquillage pour shooting photo et vidéo, soins du visage, et cours de maquillage privés. Elle est basée à Casablanca, quartier Maarif, et se déplace dans tout le Maroc.",
+          },
+        },
+        {
+          "@type": "Question",
+          "name": "Comment contacter Tyma Makeup Artist pour un rendez-vous ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Vous pouvez contacter Tyma Makeup Artist directement via WhatsApp au +212 6 94 86 36 46, ou via Instagram @tymabeauty. Elle répond sous 24h et propose un devis gratuit.",
           },
         },
       ],

@@ -8,7 +8,7 @@ import { SparklesText }          from "@/components/magicui/sparkles-text";
 import { SocialIcon }            from "@/lib/social-icons";
 import {
   WHATSAPP, PHONE_TEL, INSTAGRAM, FACEBOOK, TIKTOK, YOUTUBE,
-  GOOGLE_MAPS, GOOGLE_REVIEWS, getFooterNetworks, getReelsNetworks,
+  GOOGLE_MAPS, GOOGLE_REVIEWS, GOOGLE_RATING, GOOGLE_REVIEW_COUNT, getFooterNetworks, getReelsNetworks,
   type SocialNetwork,
 } from "@/lib/social-config";
 import { createClient } from "@sanity/client";
@@ -32,6 +32,7 @@ const NAV_LINKS = [
   { label: "Prestations", href: "#prestations" },
   { label: "Guide",       href: "#guide" },
   { label: "Galerie",     href: "#galerie" },
+  { label: "FAQ",         href: "#faq" },
   { label: "Avis",        href: "#avis" },
   { label: "Accès",       href: "#acces" },
 ];
@@ -99,6 +100,50 @@ const GUIDE_ROWS = [
   { occasion: "Débutante maquillage",      style: "Techniques de base personnalisées",    prestation: "Formation individuelle" },
 ];
 
+const FAQ_ITEMS = [
+  {
+    q: "Combien de temps dure une séance maquillage mariage ?",
+    qd: "شحال كتاخد الجلسة ديال المكياج ديال العرس ؟",
+    a: "Une séance mariée dure entre 2h30 et 3h30 selon la complexité du look et les essais réalisés en amont. Un essai préalable est recommandé pour affiner le résultat final.",
+    ad: "الجلسة ديال العروسة كتاخد بين 2h30 و 3h30 حسب التعقيد ديال اللوك والتجربات اللي دارتيها من قبل. كنوصي بتجربة قبلية باش نوصلو للنتيجة المثالية.",
+  },
+  {
+    q: "Proposez-vous le déplacement à domicile ?",
+    qd: "كاتجيو للدار ؟",
+    a: "Oui, je me déplace à domicile ou sur le lieu de l'événement à Casablanca et ses environs. Des frais de déplacement peuvent s'appliquer selon la distance.",
+    ad: "إيه، كنجي للدار ولا للمكان ديال الحفلة فكازا وضواحيها. ممكن يكون فيه تكاليف التنقل حسب البعد.",
+  },
+  {
+    q: "Faut-il réserver à l'avance pour un mariage ?",
+    qd: "خاص نحجز من قبل للعرس ؟",
+    a: "Absolument. Les dates de mariage se réservent plusieurs mois à l'avance, parfois jusqu'à un an. Je vous conseille de me contacter dès que votre date est fixée.",
+    ad: "حتما. التواريخ ديال الأعراس كتتحجز بزاف بكري، ممكن يوصل لعام. كنصحك تتواصلي معايا من حين ما تعرفي التاريخ.",
+  },
+  {
+    q: "Les produits utilisés sont-ils adaptés aux peaux sensibles ?",
+    qd: "المنتجات اللي كتخدمي بيها مناسبة للبشرة الحساسة ؟",
+    a: "Oui, j'utilise exclusivement des marques professionnelles hypoallergéniques. Je réalise systématiquement un test cutané lors de l'essai pour éviter toute réaction.",
+    ad: "إيه، كنخدم غير بماركات محترفة هيبوالرجينيك. كندير دايما تيست على الجلد وقت التجربة باش نتفاداو أي رد فعل.",
+  },
+  {
+    q: "Proposez-vous des formations pour débutantes ?",
+    qd: "عندك تكوينات للمبتدئات ؟",
+    a: "Oui, je propose des formations individuelles et en groupe pour tous niveaux, du maquillage quotidien aux techniques professionnelles avancées.",
+    ad: "إيه، عندي تكوينات فردية وجماعية لجميع المستويات، من مكياج اليومي حتى التقنيات المحترفة.",
+  },
+  {
+    q: "Comment se déroule l'essai mariage ?",
+    qd: "كيفاش كيكون التيست ديال العرس ؟",
+    a: "L'essai se déroule dans mon studio ou à domicile. Durée : 2h environ. Nous testons le look complet, prenons des photos sous différentes lumières et ajustons selon vos retours.",
+    ad: "التيست كيكون فستوديو ديالي ولا فدارك. المدة: حوالي ساعتين. كنجربو اللوك كامل، كناخدو صور فضوء مختلفة وكنعدلو حسب رأيك.",
+  },
+  {
+    q: "Quelle est la durée de tenue du maquillage ?",
+    qd: "شحال كيبقى المكياج ؟",
+    a: "Avec les produits fixateurs professionnels que j'utilise, le maquillage tient entre 12h et 16h selon les conditions. Idéal pour les longues journées de mariage.",
+    ad: "بالمنتجات الثابتة المحترفة اللي كنخدم بيها، المكياج كيبقى بين 12 و 16 ساعة حسب الظروف. مثالي لنهار العرس الطويل.",
+  },
+];
 
 const TESTIMONIALS = [
   {
@@ -134,15 +179,56 @@ function fadeUp(delay = 0) {
   };
 }
 
-function Stars({ n = 5 }: { n?: number }) {
+function Stars({ n = 5, color = "#9B7B6A", size = "w-4 h-4" }: { n?: number; color?: string; size?: string }) {
   return (
     <span className="flex gap-0.5">
       {Array.from({ length: n }).map((_, i) => (
-        <svg key={i} viewBox="0 0 20 20" fill="#9B7B6A" className="w-4 h-4">
+        <svg key={i} viewBox="0 0 20 20" fill={color} className={size}>
           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
         </svg>
       ))}
     </span>
+  );
+}
+
+function GoogleBadge({ variant = "dark" }: { variant?: "dark" | "light" }) {
+  const isDark = variant === "dark";
+  return (
+    <a
+      href={GOOGLE_REVIEWS}
+      target="_blank" rel="noopener noreferrer"
+      className="inline-flex items-center gap-3 rounded-2xl cursor-pointer transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+      style={{
+        padding: "10px 16px",
+        background: isDark ? "rgba(255,255,255,0.07)" : "rgba(255,255,255,0.95)",
+        border: isDark ? "1px solid rgba(255,255,255,0.12)" : "1px solid rgba(0,0,0,0.08)",
+        boxShadow: isDark ? "none" : "0 2px 12px rgba(0,0,0,0.08)",
+        textDecoration: "none",
+        backdropFilter: isDark ? "blur(12px)" : "none",
+      }}
+    >
+      {/* Logo Google officiel */}
+      <svg viewBox="0 0 24 24" style={{ width: 22, height: 22, flexShrink: 0 }} xmlns="http://www.w3.org/2000/svg">
+        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+      </svg>
+      {/* Séparateur */}
+      <div style={{ width: 1, height: 28, background: isDark ? "rgba(255,255,255,0.15)" : "rgba(0,0,0,0.1)", flexShrink: 0 }} />
+      {/* Note */}
+      <div className="flex flex-col gap-0.5">
+        <div className="flex items-center gap-1.5">
+          <Stars n={5} color="#FBBC04" size="w-3.5 h-3.5" />
+          <span className="text-sm font-bold tabular-nums" style={{ color: isDark ? "rgba(255,255,255,0.92)" : "#1a1a1a", fontFamily: "var(--font-body)", lineHeight: 1 }}>
+            {GOOGLE_RATING.toFixed(1).replace(".", ",")}
+          </span>
+        </div>
+        <span className="text-xs" style={{ color: isDark ? "rgba(255,255,255,0.45)" : "#666", fontFamily: "var(--font-body)", lineHeight: 1 }}>
+          {GOOGLE_REVIEW_COUNT} avis Google
+        </span>
+      </div>
+    </a>
   );
 }
 
@@ -397,18 +483,22 @@ function Hero() {
           {/* ── Colonne texte ── */}
           <div>
             {/* Badge Google */}
-            <motion.div {...fadeUp(0)} className="inline-flex items-center gap-2.5 mb-7">
-              <a
-                href="https://share.google/rV2vUc5ApuF8PzcMI"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2.5 px-4 py-2.5 rounded-full transition-opacity hover:opacity-80"
-                style={{ background: "rgba(192,150,80,0.12)", border: "1px solid rgba(192,150,80,0.28)" }}
-              >
-                <Stars />
-                <span className="text-sm font-semibold" style={{ color: "#EAD4A0" }}>4,7 / 5</span>
-                <span className="text-xs" style={{ color: "rgba(234,212,160,0.55)" }}>· 30 avis Google</span>
-              </a>
+            <motion.div {...fadeUp(0)} className="mb-7">
+              <GoogleBadge variant="dark" />
+            </motion.div>
+
+            {/* Chips credentials */}
+            <motion.div {...fadeUp(0.05)} className="flex flex-wrap gap-2 mb-7">
+              {[
+                { label: "11 ans d'expérience" },
+                { label: "500+ mariées" },
+                { label: "100+ shootings" },
+                { label: "Formation certifiée" },
+              ].map((c) => (
+                <span key={c.label} className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(192,150,80,0.13)", border: "1px solid rgba(192,150,80,0.22)", color: "rgba(234,212,160,0.8)", fontFamily: "var(--font-body)", letterSpacing: "0.04em" }}>
+                  {c.label}
+                </span>
+              ))}
             </motion.div>
 
             <motion.h1 {...fadeUp(0.1)} className="type-display mb-1" style={{ color: "rgba(253,252,249,0.9)" }}>
@@ -701,19 +791,7 @@ type SanityGalleryItem = {
 };
 
 function Galerie() {
-  const [sanityItems, setSanityItems] = useState<SanityGalleryItem[]>([]);
-
   useEffect(() => {
-    sanityClient
-      .fetch<SanityGalleryItem[]>(
-        `*[_type == "gallery"] | order(order asc, _createdAt desc) {
-          _id, label, sub, source, image, videoId, externalUrl, tall
-        }`
-      )
-      .then(setSanityItems)
-      .catch(() => {});
-
-    // Injecter le script Behold une seule fois
     if (!document.querySelector('script[src="https://w.behold.so/widget.js"]')) {
       const s = document.createElement("script");
       s.type = "module";
@@ -740,36 +818,9 @@ function Galerie() {
           </motion.a>
         </div>
 
-        {/* Widget Behold — layout contrôlé depuis behold.so */}
+        {/* Widget Behold — feed Instagram */}
         {/* @ts-expect-error custom element */}
         <behold-widget feed-id="Pif3VuIMu4dr7mXS0XAA" />
-
-        {/* Items Sanity (uploads manuels) */}
-        {sanityItems.length > 0 && (
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 mt-6">
-            {sanityItems.map((item, i) => (
-              <motion.div
-                key={item._id}
-                {...fadeUp(0.05 * i)}
-                className={`gallery-item ${item.tall ? "row-span-2" : ""}`}
-                style={{ aspectRatio: item.tall ? "3/4" : "4/3" }}
-              >
-                {item.source === "upload" && item.image ? (
-                  <img src={sanityImg(item.image)} alt={item.label} className="w-full h-full object-cover" loading="lazy" />
-                ) : item.source === "youtube" && item.videoId ? (
-                  <iframe src={`https://www.youtube.com/embed/${item.videoId}?rel=0&modestbranding=1`} title={item.label} allowFullScreen className="w-full h-full" style={{ border: 0 }} />
-                ) : item.externalUrl ? (
-                  <img src={item.externalUrl} alt={item.label} className="w-full h-full object-cover" loading="lazy" />
-                ) : null}
-                <div className="gallery-overlay" />
-                <div className="gallery-caption">
-                  <div className="text-white font-medium text-sm" style={{ fontFamily: "var(--font-display)" }}>{item.label}</div>
-                  {item.sub && <div className="text-white/60 text-xs mt-0.5">{item.sub}</div>}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        )}
       </div>
     </section>
   );
@@ -778,35 +829,9 @@ function Galerie() {
 /* ═══════════════════════════════════════
    REELS & SHORTS
 ═══════════════════════════════════════ */
-/* Remplacer les IDs par les vrais IDs YouTube de Tyma */
-const REELS = [
-  {
-    id: "dQw4w9WgXcQ",
-    label: "Tuto Mariée",
-    sub: "Look Oriental Nacré",
-    thumb: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&q=80&fit=crop&crop=faces",
-  },
-  {
-    id: "dQw4w9WgXcQ",
-    label: "Smoky Eye",
-    sub: "Technique Pro",
-    thumb: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400&q=80&fit=crop&crop=faces",
-  },
-  {
-    id: "dQw4w9WgXcQ",
-    label: "Contouring HD",
-    sub: "Shooting Mode",
-    thumb: "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=400&q=80&fit=crop&crop=top",
-  },
-  {
-    id: "dQw4w9WgXcQ",
-    label: "Glam Soirée",
-    sub: "Lèvres bordeaux",
-    thumb: "https://images.unsplash.com/photo-1529665253569-6d01c0eaf7b6?w=400&q=80&fit=crop&crop=top",
-  },
-];
+type Reel = { id: string; label: string; thumb: string };
 
-function ReelCard({ reel, index }: { reel: typeof REELS[0]; index: number }) {
+function ReelCard({ reel, index }: { reel: Reel; index: number }) {
   const [playing, setPlaying] = useState(false);
 
   return (
@@ -847,7 +872,7 @@ function ReelCard({ reel, index }: { reel: typeof REELS[0]; index: number }) {
             {/* Label bas */}
             <div className="absolute bottom-0 left-0 right-0 p-4">
               <div className="text-sm font-semibold" style={{ color: "white", fontFamily: "var(--font-display)", fontStyle: "italic" }}>{reel.label}</div>
-              <div className="type-label mt-0.5" style={{ color: "rgba(234,212,160,0.7)", fontSize: "0.52rem" }}>{reel.sub}</div>
+              <div className="type-label mt-0.5" style={{ color: "rgba(234,212,160,0.7)", fontSize: "0.52rem" }}>YouTube Short</div>
             </div>
           </>
         )}
@@ -857,6 +882,16 @@ function ReelCard({ reel, index }: { reel: typeof REELS[0]; index: number }) {
 }
 
 function ReelsSection() {
+  const [reels, setReels] = useState<Reel[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("/api/youtube-shorts")
+      .then((r) => r.json())
+      .then((data) => { setReels(data.shorts || []); setLoading(false); })
+      .catch(() => setLoading(false));
+  }, []);
+
   return (
     <section id="reels" className="py-24" style={{ background: "var(--s0)" }}>
       <div className="max-w-6xl mx-auto px-5">
@@ -870,7 +905,6 @@ function ReelsSection() {
               <span style={{ color: "var(--gold)", fontStyle: "italic" }}>coulisses beauté</span>
             </motion.h2>
           </div>
-          {/* Boutons vers les plateformes vidéo — depuis lib/social-config.ts */}
           <div className="flex flex-wrap gap-3">
             {getReelsNetworks().map((network: SocialNetwork, i) => (
               <motion.a key={network.id} {...fadeUp(0.1 + i * 0.05)}
@@ -884,14 +918,22 @@ function ReelsSection() {
           </div>
         </div>
 
-        {/* Grid 2 cols mobile, 4 cols desktop */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
-          {REELS.map((reel, i) => (
-            <ReelCard key={i} reel={reel} index={i} />
-          ))}
-        </div>
+        {loading ? (
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+            {Array.from({ length: 4 }).map((_, i) => (
+              <div key={i} className="rounded-2xl animate-pulse" style={{ aspectRatio: "9/16", background: "var(--s2)" }} />
+            ))}
+          </div>
+        ) : reels.length > 0 ? (
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+            {reels.map((reel, i) => (
+              <ReelCard key={reel.id} reel={reel} index={i} />
+            ))}
+          </div>
+        ) : (
+          <p className="text-center text-sm" style={{ color: "var(--t2)" }}>Aucun Short disponible pour le moment.</p>
+        )}
 
-        {/* CTA bas */}
         <motion.div {...fadeUp(0.24)} className="mt-10 text-center">
           <div className="flex flex-wrap justify-center gap-3">
             <a href={YOUTUBE} target="_blank" rel="noopener noreferrer" className="btn-gold flex items-center gap-2">
@@ -919,30 +961,124 @@ function ReelsSection() {
 function InstagramCTA() {
   return (
     <section className="py-20" style={{ background: "var(--t0)" }}>
-      <div className="max-w-4xl mx-auto px-5 text-center">
-        <motion.div {...fadeUp(0)}>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.4} className="w-10 h-10 mx-auto mb-6" style={{ color: "var(--gold-pale)" }}>
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-            <circle cx="12" cy="12" r="4"/>
-            <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor"/>
-          </svg>
-        </motion.div>
-        <motion.h2 {...fadeUp(0.08)} className="type-section mb-4" style={{ color: "var(--s0)" }}>
-          Suivez l'univers<br />
-          <span style={{ color: "var(--gold-light)", fontStyle: "italic" }}>Tyma Makeup Artist</span>
-        </motion.h2>
-        <motion.p {...fadeUp(0.14)} className="text-sm leading-relaxed mb-8 max-w-lg mx-auto" style={{ color: "var(--s3)" }}>
-          Conseils beauté, techniques maquillage, avant/après et coulisses de mes créations.
-          Rejoignez ma communauté sur Instagram pour une dose d'inspiration quotidienne.
-        </motion.p>
-        <motion.div {...fadeUp(0.2)} className="flex flex-wrap gap-3 justify-center">
-          <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" className="btn-gold" style={{ background: "var(--s0)", color: "var(--t0)" }}>
-            @tymabeauty sur Instagram →
-          </a>
-          <a href={FACEBOOK} target="_blank" rel="noopener noreferrer" className="btn-outline" style={{ borderColor: "rgba(246,243,238,0.3)", color: "var(--s0)" }}>
-            Facebook
-          </a>
-        </motion.div>
+      <div className="max-w-5xl mx-auto px-5">
+        <div className="grid sm:grid-cols-2 gap-6">
+          {/* Instagram */}
+          <motion.div {...fadeUp(0)} className="rounded-2xl p-8 flex flex-col items-center text-center gap-4" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(210,200,184,0.12)" }}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.4} className="w-9 h-9" style={{ color: "var(--gold-pale)" }}>
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor"/>
+            </svg>
+            <div>
+              <div className="text-sm font-semibold mb-1" style={{ color: "var(--s0)", fontFamily: "var(--font-display)" }}>Inspirations quotidiennes</div>
+              <div className="text-xs leading-relaxed" style={{ color: "var(--s3)" }}>Avant/après, coulisses, conseils beauté — suivez l'univers Tyma.</div>
+            </div>
+            <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" className="btn-gold mt-auto" style={{ background: "var(--s0)", color: "var(--t0)", fontSize: "0.8rem" }}>
+              @tymabeauty →
+            </a>
+          </motion.div>
+
+          {/* WhatsApp */}
+          <motion.div {...fadeUp(0.1)} className="rounded-2xl p-8 flex flex-col items-center text-center gap-4" style={{ background: "linear-gradient(135deg, rgba(37,211,102,0.15) 0%, rgba(37,211,102,0.05) 100%)", border: "1px solid rgba(37,211,102,0.25)" }}>
+            <svg viewBox="0 0 24 24" fill="currentColor" className="w-9 h-9" style={{ color: "#25D366" }}>
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            <div>
+              <div className="text-sm font-semibold mb-1" style={{ color: "var(--s0)", fontFamily: "var(--font-display)" }}>Réservez maintenant</div>
+              <div className="text-xs leading-relaxed" style={{ color: "var(--s3)" }}>Réponse rapide · Disponibilités · Devis personnalisé</div>
+            </div>
+            <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn-gold mt-auto" style={{ background: "#25D366", color: "#fff", fontSize: "0.8rem", border: "none" }}>
+              Écrire sur WhatsApp →
+            </a>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ═══════════════════════════════════════
+   FAQ
+═══════════════════════════════════════ */
+function FAQ() {
+  const [open, setOpen] = useState<number | null>(null);
+  const [lang, setLang] = useState<"fr" | "dr">("fr");
+
+  return (
+    <section id="faq" className="py-28" style={{ background: "var(--s0)" }}>
+      <div className="max-w-3xl mx-auto px-5">
+        <div className="text-center mb-12">
+          <motion.p {...fadeUp(0)} className="type-label mb-3" style={{ color: "var(--gold)" }}>
+            Questions fréquentes
+          </motion.p>
+          <motion.h2 {...fadeUp(0.08)} className="type-section" style={{ color: "var(--t0)" }}>
+            Vous avez une question ?<br />
+            <span style={{ color: "var(--gold)", fontStyle: "italic" }}>On a la réponse</span>
+          </motion.h2>
+          <motion.div {...fadeUp(0.14)} className="inline-flex mt-6 rounded-full p-1" style={{ background: "var(--s2)", border: "1px solid var(--glass-border)" }}>
+            <button
+              onClick={() => setLang("fr")}
+              className="px-4 py-1.5 rounded-full text-xs transition-all duration-200 cursor-pointer"
+              style={{
+                background: lang === "fr" ? "var(--gold)" : "transparent",
+                color: lang === "fr" ? "var(--t0)" : "var(--t2)",
+                fontFamily: "var(--font-body)",
+                fontWeight: lang === "fr" ? 600 : 400,
+              }}
+            >
+              Français
+            </button>
+            <button
+              onClick={() => setLang("dr")}
+              className="px-4 py-1.5 rounded-full text-xs transition-all duration-200 cursor-pointer"
+              style={{
+                background: lang === "dr" ? "var(--gold)" : "transparent",
+                color: lang === "dr" ? "var(--t0)" : "var(--t2)",
+                fontFamily: "var(--font-body)",
+                fontWeight: lang === "dr" ? 600 : 400,
+              }}
+            >
+              الدارجة
+            </button>
+          </motion.div>
+        </div>
+
+        <div className="flex flex-col gap-3">
+          {FAQ_ITEMS.map((item, i) => (
+            <motion.div key={i} {...fadeUp(0.05 * i)}>
+              <button
+                className="w-full text-left flex items-start justify-between gap-4 p-5 rounded-2xl transition-all duration-200 cursor-pointer"
+                style={{
+                  background: open === i ? "var(--s1)" : "var(--s2)",
+                  border: `1px solid ${open === i ? "rgba(192,150,80,0.35)" : "var(--glass-border)"}`,
+                }}
+                onClick={() => setOpen(open === i ? null : i)}
+                dir={lang === "dr" ? "rtl" : "ltr"}
+              >
+                <span className="text-sm font-semibold leading-snug" style={{ color: "var(--t0)", fontFamily: "var(--font-body)" }}>
+                  {lang === "fr" ? item.q : item.qd}
+                </span>
+                <svg
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}
+                  className="shrink-0 transition-transform duration-200"
+                  style={{ width: 18, height: 18, color: "var(--gold)", transform: open === i ? "rotate(180deg)" : "rotate(0deg)" }}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {open === i && (
+                <div
+                  className="px-5 pb-5 pt-3 text-sm leading-relaxed rounded-b-2xl -mt-2"
+                  style={{ background: "var(--s1)", color: "var(--t1)", fontFamily: "var(--font-body)", borderLeft: "1px solid rgba(192,150,80,0.35)", borderRight: "1px solid rgba(192,150,80,0.35)", borderBottom: "1px solid rgba(192,150,80,0.35)" }}
+                  dir={lang === "dr" ? "rtl" : "ltr"}
+                >
+                  {lang === "fr" ? item.a : item.ad}
+                </div>
+              )}
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -963,10 +1099,8 @@ function Avis() {
             Ce que disent<br />
             <span style={{ color: "var(--gold)", fontStyle: "italic" }}>mes clientes</span>
           </motion.h2>
-          <motion.div {...fadeUp(0.14)} className="flex items-center justify-center gap-3 mt-6">
-            <Stars />
-            <span className="text-lg font-bold" style={{ color: "var(--t0)", fontFamily: "var(--font-display)" }}>4,7 / 5</span>
-            <span className="text-sm" style={{ color: "var(--t1)" }}>— 30 avis Google vérifiés</span>
+          <motion.div {...fadeUp(0.14)} className="flex justify-center mt-6">
+            <GoogleBadge variant="light" />
           </motion.div>
         </div>
 
@@ -1031,33 +1165,143 @@ function Acces() {
                   <div>
                     <div className="type-label mb-0.5" style={{ color: "var(--t2)", fontSize: "0.58rem" }}>Localisation</div>
                     <a href={GOOGLE_MAPS} target="_blank" rel="noopener noreferrer" className="text-sm font-medium hover:opacity-70 transition-opacity" style={{ color: "var(--t0)" }}>
-                      Casablanca, Maroc · Déplacement possible
+                      Tyma Beauty Makeup Artist · Casablanca, Maroc
                     </a>
+                    <div className="flex flex-col sm:flex-row gap-3 mt-4 w-full">
+                      {/* Google Maps */}
+                      <a
+                        href={GOOGLE_MAPS}
+                        target="_blank" rel="noopener noreferrer"
+                        className="flex items-center gap-3 cursor-pointer rounded-2xl transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+                        style={{
+                          flex: 1,
+                          minHeight: "56px",
+                          padding: "12px 18px",
+                          background: "linear-gradient(135deg, #ffffff 0%, #f8f4ee 100%)",
+                          border: "1px solid rgba(192,150,80,0.25)",
+                          boxShadow: "0 4px 16px rgba(12,10,7,0.10), 0 1px 4px rgba(192,150,80,0.12)",
+                          textDecoration: "none",
+                        }}
+                      >
+                        {/* Logo Google Maps officiel */}
+                        <svg viewBox="0 0 192 192" className="shrink-0" style={{ width: 28, height: 28 }} xmlns="http://www.w3.org/2000/svg">
+                          <path fill="#4285F4" d="M96 20C63.1 20 36 47.1 36 80c0 44 60 92 60 92s60-48 60-92c0-32.9-27.1-60-60-60z"/>
+                          <path fill="#EA4335" d="M96 20c-20 0-37.5 9.8-48.1 24.8L96 80l48.1-35.2C133.5 29.8 116 20 96 20z"/>
+                          <path fill="#FBBC04" d="M47.9 44.8C40.3 55 36 67.5 36 80l60-0.3-48.1-34.9z"/>
+                          <path fill="#34A853" d="M144.1 44.8L96 79.7 156 80c0-12.5-4.3-25-11.9-35.2z"/>
+                          <circle fill="#ffffff" cx="96" cy="80" r="24"/>
+                          <circle fill="#4285F4" cx="96" cy="80" r="16"/>
+                        </svg>
+                        <div style={{ lineHeight: 1.2 }}>
+                          <div style={{ fontSize: "0.6rem", color: "#888", fontFamily: "var(--font-body)", letterSpacing: "0.06em", textTransform: "uppercase" }}>Ouvrir dans</div>
+                          <div style={{ fontSize: "0.85rem", fontWeight: 600, color: "var(--t0)", fontFamily: "var(--font-body)" }}>Google Maps</div>
+                        </div>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="ml-auto shrink-0" style={{ width: 16, height: 16, color: "#aaa" }}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                        </svg>
+                      </a>
+
+                      {/* Waze */}
+                      <a
+                        href="https://waze.com/ul?ll=33.5270151,-7.6495311&navigate=yes"
+                        target="_blank" rel="noopener noreferrer"
+                        className="flex items-center gap-3 cursor-pointer rounded-2xl transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+                        style={{
+                          flex: 1,
+                          minHeight: "56px",
+                          padding: "12px 18px",
+                          background: "linear-gradient(135deg, #05C8F7 0%, #00AADB 100%)",
+                          border: "1px solid rgba(5,200,247,0.3)",
+                          boxShadow: "0 4px 16px rgba(5,200,247,0.25), 0 1px 4px rgba(0,0,0,0.08)",
+                          textDecoration: "none",
+                        }}
+                      >
+                        {/* Logo Waze officiel */}
+                        <svg viewBox="0 0 56 56" className="shrink-0" style={{ width: 28, height: 28 }} xmlns="http://www.w3.org/2000/svg">
+                          <ellipse cx="28" cy="30" rx="22" ry="20" fill="#ffffff"/>
+                          <path fill="#ffffff" d="M28 8C16.95 8 8 16.95 8 28c0 5.5 2.1 10.5 5.5 14.2L11 48l6.2-2C19.8 47.3 23.8 48 28 48c11.05 0 20-8.95 20-20S39.05 8 28 8z"/>
+                          <ellipse cx="22" cy="26" rx="3" ry="3.5" fill="#3D3D3D"/>
+                          <ellipse cx="34" cy="26" rx="3" ry="3.5" fill="#3D3D3D"/>
+                          <path d="M21 33c1.5 3 10.5 3 12 0" stroke="#3D3D3D" strokeWidth="2" strokeLinecap="round" fill="none"/>
+                          <circle cx="38" cy="14" r="4" fill="#FF6B6B"/>
+                          <circle cx="44" cy="20" r="3" fill="#FFD93D"/>
+                        </svg>
+                        <div style={{ lineHeight: 1.2 }}>
+                          <div style={{ fontSize: "0.6rem", color: "rgba(255,255,255,0.75)", fontFamily: "var(--font-body)", letterSpacing: "0.06em", textTransform: "uppercase" }}>Naviguer avec</div>
+                          <div style={{ fontSize: "0.85rem", fontWeight: 600, color: "#ffffff", fontFamily: "var(--font-body)" }}>Waze</div>
+                        </div>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="ml-auto shrink-0" style={{ width: 16, height: 16, color: "rgba(255,255,255,0.7)" }}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                        </svg>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="glass-card p-6">
-              <h3 className="font-semibold mb-4" style={{ color: "var(--t0)", fontFamily: "var(--font-display)", fontSize: "1.1rem" }}>Disponibilités</h3>
-              <div className="flex flex-col gap-3 text-sm">
-                {[
-                  { j: "Lundi — Vendredi", h: "9h00 – 20h00" },
-                  { j: "Samedi",           h: "8h00 – 22h00" },
-                  { j: "Dimanche",         h: "Sur rendez-vous" },
-                ].map((r, i) => (
-                  <div key={i} className="flex justify-between items-center pb-3" style={{ borderBottom: i < 2 ? "1px solid var(--glass-border)" : "none" }}>
-                    <span style={{ color: "var(--t1)" }}>{r.j}</span>
-                    <span className="font-medium" style={{ color: "var(--t0)" }}>{r.h}</span>
-                  </div>
-                ))}
+            {/* Bloc réservation — Liquid Glass dark premium */}
+            <div className="relative rounded-3xl overflow-hidden flex flex-col" style={{
+              background: "rgba(12,10,7,0.93)",
+              border: "1px solid rgba(192,150,80,0.22)",
+              boxShadow: "0 24px 64px rgba(12,10,7,0.45), inset 0 1px 0 rgba(192,150,80,0.18)",
+            }}>
+              {/* Halo décoratif */}
+              <div className="absolute top-0 right-0 pointer-events-none" style={{ width: 200, height: 200, background: "radial-gradient(circle, rgba(192,150,80,0.15) 0%, transparent 70%)", transform: "translate(35%,-35%)" }} />
+
+              {/* Header */}
+              <div className="px-6 pt-6 pb-5" style={{ borderBottom: "1px solid rgba(192,150,80,0.1)" }}>
+                <div className="flex items-center gap-2.5 mb-1">
+                  <span className="relative flex h-2.5 w-2.5 shrink-0">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-60" style={{ background: "var(--gold)" }} />
+                    <span className="relative inline-flex rounded-full h-2.5 w-2.5" style={{ background: "var(--gold)" }} />
+                  </span>
+                  <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: "var(--gold)", fontFamily: "var(--font-body)", letterSpacing: "0.14em" }}>
+                    Sur rendez-vous
+                  </span>
+                </div>
+                <p className="text-xs mt-1" style={{ color: "rgba(253,252,249,0.4)", fontFamily: "var(--font-body)" }}>
+                  7j/7 · selon disponibilités
+                </p>
+              </div>
+
+              {/* CTA */}
+              <div className="px-6 py-5 flex flex-col gap-3">
+                <p className="text-xs leading-relaxed" style={{ color: "rgba(253,252,249,0.45)", fontFamily: "var(--font-body)" }}>
+                  Les dates mariage se réservent{" "}
+                  <strong style={{ color: "rgba(234,212,160,0.85)" }}>3 à 6 mois à l'avance</strong>.
+                </p>
+                <a
+                  href={WHATSAPP}
+                  target="_blank" rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2.5 rounded-2xl cursor-pointer transition-all duration-200 hover:brightness-110 active:scale-[0.97]"
+                  style={{
+                    minHeight: "54px",
+                    background: "linear-gradient(135deg, #1db954 0%, #25D366 100%)",
+                    color: "#fff",
+                    fontFamily: "var(--font-body)",
+                    fontSize: "0.9rem",
+                    fontWeight: 700,
+                    textDecoration: "none",
+                    boxShadow: "0 6px 24px rgba(37,211,102,0.4)",
+                    letterSpacing: "0.01em",
+                  }}
+                >
+                  <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: 20, height: 20, flexShrink: 0 }}>
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                  </svg>
+                  Réserver ma date
+                </a>
+                <p className="text-center text-xs" style={{ color: "rgba(253,252,249,0.22)", fontFamily: "var(--font-body)" }}>
+                  Réponse sous 24h · Devis gratuit
+                </p>
               </div>
             </div>
           </motion.div>
 
           <motion.div {...fadeUp(0.18)} className="rounded-2xl overflow-hidden" style={{ border: "1px solid var(--glass-border)", minHeight: "420px" }}>
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d106376.28!2d-7.589992!3d33.573109!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7cd4786b2f8b5%3A0xb0a9e6d58fe94073!2sCasablanca%2C%20Maroc!5e0!3m2!1sfr!2sma!4v1"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3325.2!2d-7.6495311!3d33.5270151!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda62d934ceccb57%3A0x9ecfacc13b5519bf!2sTyma%20Beauty%20Makeup%20Artist%20Casablanca!5e0!3m2!1sfr!2sma!4v1"
               width="100%"
               height="420"
               style={{ border: 0 }}
@@ -1148,6 +1392,7 @@ export default function Page() {
         <Galerie />
         <ReelsSection />
         <InstagramCTA />
+        <FAQ />
         <Avis />
         <Acces />
       </main>

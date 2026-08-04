@@ -41,7 +41,7 @@ export const SOCIAL_NETWORKS: SocialNetwork[] = [
   {
     id: 'tiktok',
     name: 'TikTok',
-    url: 'https://www.tiktok.com/@tymabeauty',
+    url: 'https://www.tiktok.com/@tyma.beauty',
     color: '#010101',
     bgHover: 'rgba(255,255,255,0.1)',
     active: false, // mettre à true + URL réelle quand disponible
@@ -52,10 +52,10 @@ export const SOCIAL_NETWORKS: SocialNetwork[] = [
   {
     id: 'youtube',
     name: 'YouTube',
-    url: 'https://www.youtube.com/@tymabeauty',
+    url: 'https://www.youtube.com/@TymaBeauty',
     color: '#FF0000',
     bgHover: 'rgba(255,0,0,0.1)',
-    active: false, // mettre à true + URL réelle quand disponible
+    active: true,
     showInFooter: true,
     showInReels: true,
     icon: 'youtube',
@@ -98,4 +98,6 @@ export const YOUTUBE = getNetwork('youtube')!.url
 export const WHATSAPP = 'https://wa.me/212694863646'
 export const GOOGLE_MAPS = 'https://maps.app.goo.gl/zGSM3uYb2D1Eqwiq8'
 export const GOOGLE_REVIEWS = 'https://share.google/rV2vUc5ApuF8PzcMI'
+export const GOOGLE_RATING = 4.8
+export const GOOGLE_REVIEW_COUNT = 41
 export const PHONE_TEL = 'tel:+212694863646'

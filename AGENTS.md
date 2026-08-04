@@ -40,7 +40,7 @@ Stack : Next.js 15 (App Router) + TypeScript + Tailwind + Framer Motion.
 - Instagram : https://www.instagram.com/tymabeauty/
 - Facebook : https://web.facebook.com/beautytyma/
 - Google Maps : https://maps.app.goo.gl/zGSM3uYb2D1Eqwiq8
-- Note Google : 4,8/5 · 41 avis
+- Note Google : 4,7/5 · 30 avis
 
 ## Chiffres clés
 - 11+ ans d'expérience
