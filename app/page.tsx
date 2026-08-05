@@ -491,19 +491,22 @@ function Hero() {
         <motion.video
           ref={desktopVideoRef}
           autoPlay muted loop playsInline preload="auto"
+          poster="/wedding-bg-poster.jpg"
           className="absolute inset-0 w-full h-full object-cover hidden md:block"
           style={{ y: videoY, filter: "saturate(0.75) brightness(0.75)", scale: 1.08 }}
         >
-          <source src="/wedding-bg.mp4" type="video/mp4" />
+          <source src="/wedding-bg.mp4" type='video/mp4; codecs="vp09.00.10.08"' />
+          <source src="/wedding-bg-h264.mp4" type='video/mp4; codecs="avc1.640028"' />
         </motion.video>
-        {/* Mobile : fixe */}
+        {/* Mobile : fixe, encodage H.264 léger pour la 4G */}
         <video
           ref={mobileVideoRef}
           autoPlay muted loop playsInline preload="auto"
+          poster="/wedding-bg-poster.jpg"
           className="absolute inset-0 w-full h-full object-cover md:hidden"
           style={{ filter: "saturate(0.7) brightness(0.68)" }}
         >
-          <source src="/wedding-bg.mp4" type="video/mp4" />
+          <source src="/wedding-bg-mobile.mp4" type='video/mp4; codecs="avc1.640028"' />
         </video>
         <div className="absolute inset-0" style={{ background: "rgba(8,5,3,0.52)" }} />
         <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 70% 50% at 60% 50%, rgba(192,150,80,0.06) 0%, transparent 70%)" }} />
