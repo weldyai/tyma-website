@@ -624,15 +624,15 @@ function GalleryPhotoMarquee() {
   const doubled = [...images, ...images];
 
   return (
-    <div className="overflow-hidden py-4" style={{ background: "var(--s0)" }}>
+    <div className="overflow-hidden py-8" style={{ background: "var(--s0)" }}>
       <div className="marquee-reverse">
         {doubled.map((src, i) => (
           <div
             key={`${src}-${i}`}
-            className="mx-3 rounded-xl overflow-hidden shrink-0"
-            style={{ width: 220, height: 140, boxShadow: "0 8px 24px rgba(12,10,7,0.12)" }}
+            className="mx-4 rounded-xl overflow-hidden shrink-0"
+            style={{ width: 240, height: 310, boxShadow: "0 12px 32px rgba(12,10,7,0.15)" }}
           >
-            <img src={src} alt="Tyma – mariée" className="w-full h-full object-cover" loading="lazy" />
+            <img src={src} alt="Tyma – mariée" className="w-full h-full object-cover object-top" loading="lazy" />
           </div>
         ))}
       </div>
@@ -1310,6 +1310,46 @@ function Acces() {
                 <p className="text-xs mt-1" style={{ color: "rgba(253,252,249,0.4)", fontFamily: "var(--font-body)" }}>
                   7j/7 · selon disponibilités
                 </p>
+              </div>
+
+              {/* Barres de disponibilité par saison */}
+              <div className="px-6 pt-5 flex flex-col gap-4">
+                {[
+                  { year: "2026", label: "Presque complet", pct: 85, color: "#F5793A", glow: "rgba(245,121,58,0.5)" },
+                  { year: "2027", label: "Réservations ouvertes", pct: 10, color: "#25D366", glow: "rgba(37,211,102,0.5)" },
+                ].map((s) => (
+                  <div key={s.year}>
+                    <div className="flex items-baseline justify-between mb-1.5">
+                      <span className="flex items-center gap-2 text-sm font-semibold" style={{ color: "rgba(253,252,249,0.9)", fontFamily: "var(--font-body)" }}>
+                        <span className="relative flex h-2 w-2 shrink-0">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-70" style={{ background: s.color }} />
+                          <span className="relative inline-flex rounded-full h-2 w-2" style={{ background: s.color }} />
+                        </span>
+                        Saison {s.year}
+                      </span>
+                      <span className="text-xs font-semibold" style={{ color: s.color, fontFamily: "var(--font-body)" }}>
+                        {s.label} · {s.pct}%
+                      </span>
+                    </div>
+                    <div className="rounded-full overflow-hidden" style={{ height: 9, background: "rgba(253,252,249,0.1)" }}>
+                      <motion.div
+                        className="h-full rounded-full relative overflow-hidden"
+                        style={{ background: s.color, boxShadow: `0 0 14px ${s.glow}` }}
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${s.pct}%` }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1.2, ease: "easeOut" }}
+                      >
+                        <motion.div
+                          className="absolute inset-y-0"
+                          style={{ width: "40%", background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent)" }}
+                          animate={{ left: ["-40%", "140%"] }}
+                          transition={{ duration: 2, repeat: Infinity, repeatDelay: 1.5, ease: "easeInOut" }}
+                        />
+                      </motion.div>
+                    </div>
+                  </div>
+                ))}
               </div>
 
               {/* CTA */}
