@@ -100,6 +100,11 @@ const GUIDE_ROWS = [
   { occasion: "Débutante maquillage",      style: "Techniques de base personnalisées",    prestation: "Formation individuelle" },
 ];
 
+const SEASONS = [
+  { year: "2026", label: "Presque complet", pct: 90, color: "#F5793A", glow: "rgba(245,121,58,0.5)" },
+  { year: "2027", label: "Réservations ouvertes", pct: 20, color: "#25D366", glow: "rgba(37,211,102,0.5)" },
+];
+
 const FAQ_ITEMS = [
   {
     q: "Combien de temps dure une séance maquillage mariage ?",
@@ -1311,7 +1316,7 @@ function Acces() {
             </div>
 
             {/* Bloc réservation — Liquid Glass dark premium */}
-            <div className="relative rounded-3xl overflow-hidden flex flex-col" style={{
+            <div id="reservation-card" className="relative rounded-3xl overflow-hidden flex flex-col" style={{
               background: "rgba(12,10,7,0.93)",
               border: "1px solid rgba(192,150,80,0.22)",
               boxShadow: "0 24px 64px rgba(12,10,7,0.45), inset 0 1px 0 rgba(192,150,80,0.18)",
@@ -1337,10 +1342,7 @@ function Acces() {
 
               {/* Barres de disponibilité par saison */}
               <div className="px-6 pt-5 flex flex-col gap-4">
-                {[
-                  { year: "2026", label: "Presque complet", pct: 85, color: "#F5793A", glow: "rgba(245,121,58,0.5)" },
-                  { year: "2027", label: "Réservations ouvertes", pct: 10, color: "#25D366", glow: "rgba(37,211,102,0.5)" },
-                ].map((s) => (
+                {SEASONS.map((s) => (
                   <div key={s.year}>
                     <div className="flex items-baseline justify-between mb-1.5">
                       <span className="flex items-center gap-2 text-sm font-semibold" style={{ color: "rgba(253,252,249,0.9)", fontFamily: "var(--font-body)" }}>
@@ -1486,6 +1488,61 @@ function Footer() {
 }
 
 /* ═══════════════════════════════════════
+   DISPONIBILITÉS FLOTTANT
+═══════════════════════════════════════ */
+function AvailabilityFloat() {
+  const [hidden, setHidden] = useState(false);
+
+  useEffect(() => {
+    const target = document.getElementById("reservation-card");
+    if (!target) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setHidden(entry.isIntersecting),
+      { rootMargin: "-10% 0px -10% 0px" }
+    );
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <motion.a
+      href={WHATSAPP}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="avail-float"
+      initial={{ opacity: 0, x: 12 }}
+      animate={{ opacity: hidden ? 0 : 1, x: hidden ? 12 : 0, pointerEvents: hidden ? "none" : "auto" }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
+    >
+      <div className="type-label mb-2" style={{ fontSize: "0.52rem", letterSpacing: "0.16em", color: "rgba(253,252,249,0.4)" }}>
+        Disponibilités
+      </div>
+      <div className="flex flex-col gap-2">
+        {SEASONS.map((s) => (
+          <div key={s.year} className="flex items-center gap-2">
+            <span className="text-xs font-semibold tabular-nums shrink-0" style={{ width: 32, color: "rgba(253,252,249,0.85)", fontFamily: "var(--font-body)" }}>
+              {s.year}
+            </span>
+            <div className="rounded-full overflow-hidden shrink-0" style={{ width: 44, height: 5, background: "rgba(253,252,249,0.12)" }}>
+              <motion.div
+                className="h-full rounded-full"
+                style={{ background: s.color, boxShadow: `0 0 8px ${s.glow}` }}
+                initial={{ width: 0 }}
+                animate={{ width: `${s.pct}%` }}
+                transition={{ duration: 1, delay: 1.3, ease: "easeOut" }}
+              />
+            </div>
+            <span className="text-xs font-semibold tabular-nums" style={{ color: s.color, fontFamily: "var(--font-body)" }}>
+              {s.pct}%
+            </span>
+          </div>
+        ))}
+      </div>
+    </motion.a>
+  );
+}
+
+/* ═══════════════════════════════════════
    PAGE
 ═══════════════════════════════════════ */
 export default function Page() {
@@ -1508,6 +1565,9 @@ export default function Page() {
         <Acces />
       </main>
       <Footer />
+
+      {/* Disponibilités flottant, à côté du WhatsApp */}
+      <AvailabilityFloat />
 
       {/* WhatsApp flottant */}
       <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="wa-float" aria-label="WhatsApp">
