@@ -377,21 +377,9 @@ function Header() {
 /* ═══════════════════════════════════════
    PORTRAIT GLOW
 ═══════════════════════════════════════ */
-const HERO_PHOTOS = [
-  "/gallery/hero-1.jpg",
-  "/gallery/hero-2.jpg",
-  "/gallery/hero-3.jpg",
-];
-
 function PortraitGlow({ size = "lg" }: { size?: "sm" | "lg" }) {
   const w = size === "lg" ? 320 : 260;
   const h = size === "lg" ? 440 : 360;
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    const id = setInterval(() => setIndex((i) => (i + 1) % HERO_PHOTOS.length), 4000);
-    return () => clearInterval(id);
-  }, []);
 
   return (
     <div className="relative flex justify-center items-center" style={{ width: w, height: h }}>
@@ -438,16 +426,6 @@ function PortraitGlow({ size = "lg" }: { size?: "sm" | "lg" }) {
           flexShrink: 0,
         }}
       >
-        {HERO_PHOTOS.map((src, i) => (
-          <img
-            key={src}
-            src={src}
-            alt="Tyma – Maquilleuse professionnelle, mariées réelles"
-            className="absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-1000"
-            style={{ opacity: i === index ? 1 : 0 }}
-            fetchPriority={i === 0 ? "high" : "auto"}
-          />
-        ))}
         {/* Reflet doré bas */}
         <div
           className="absolute bottom-0 left-0 right-0"
@@ -622,6 +600,40 @@ function Marquee() {
           <span key={i} className="mx-8 whitespace-nowrap" style={{ fontFamily: "var(--font-body)", fontSize: "0.7rem", fontWeight: 400, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--t2)" }}>
             {w} <span style={{ color: "var(--gold-pale)", margin: "0 0.5rem" }}>✦</span>
           </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* ═══════════════════════════════════════
+   GALERIE MARQUEE — défilement inverse
+═══════════════════════════════════════ */
+function GalleryPhotoMarquee() {
+  const [images, setImages] = useState<string[]>([]);
+
+  useEffect(() => {
+    fetch("/api/gallery-images")
+      .then((r) => r.json())
+      .then((data) => setImages(data.images ?? []))
+      .catch(() => setImages([]));
+  }, []);
+
+  if (images.length === 0) return null;
+
+  const doubled = [...images, ...images];
+
+  return (
+    <div className="overflow-hidden py-4" style={{ background: "var(--s0)" }}>
+      <div className="marquee-reverse">
+        {doubled.map((src, i) => (
+          <div
+            key={`${src}-${i}`}
+            className="mx-3 rounded-xl overflow-hidden shrink-0"
+            style={{ width: 220, height: 140, boxShadow: "0 8px 24px rgba(12,10,7,0.12)" }}
+          >
+            <img src={src} alt="Tyma – mariée" className="w-full h-full object-cover" loading="lazy" />
+          </div>
         ))}
       </div>
     </div>
@@ -1421,6 +1433,7 @@ export default function Page() {
       <main>
         <Hero />
         <Marquee />
+        <GalleryPhotoMarquee />
         <Parcours />
         <Prestations />
         <GuideBeaute />
