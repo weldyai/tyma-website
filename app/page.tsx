@@ -377,9 +377,22 @@ function Header() {
 /* ═══════════════════════════════════════
    PORTRAIT GLOW
 ═══════════════════════════════════════ */
+const HERO_PHOTOS = [
+  "/gallery/hero-1.jpg",
+  "/gallery/hero-2.jpg",
+  "/gallery/hero-3.jpg",
+];
+
 function PortraitGlow({ size = "lg" }: { size?: "sm" | "lg" }) {
   const w = size === "lg" ? 320 : 260;
   const h = size === "lg" ? 440 : 360;
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => setIndex((i) => (i + 1) % HERO_PHOTOS.length), 4000);
+    return () => clearInterval(id);
+  }, []);
+
   return (
     <div className="relative flex justify-center items-center" style={{ width: w, height: h }}>
       {/* Halo or doré */}
@@ -416,6 +429,7 @@ function PortraitGlow({ size = "lg" }: { size?: "sm" | "lg" }) {
         }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         style={{
+          position: "relative",
           width: w,
           height: h,
           borderRadius: `${w / 2}px ${w / 2}px 18px 18px`,
@@ -424,12 +438,16 @@ function PortraitGlow({ size = "lg" }: { size?: "sm" | "lg" }) {
           flexShrink: 0,
         }}
       >
-        <img
-          src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=800&q=90&auto=format&fit=crop&crop=faces"
-          alt="Tyma – Maquilleuse professionnelle"
-          className="w-full h-full object-cover object-top"
-          fetchPriority="high"
-        />
+        {HERO_PHOTOS.map((src, i) => (
+          <img
+            key={src}
+            src={src}
+            alt="Tyma – Maquilleuse professionnelle, mariées réelles"
+            className="absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-1000"
+            style={{ opacity: i === index ? 1 : 0 }}
+            fetchPriority={i === 0 ? "high" : "auto"}
+          />
+        ))}
         {/* Reflet doré bas */}
         <div
           className="absolute bottom-0 left-0 right-0"
@@ -445,8 +463,20 @@ function PortraitGlow({ size = "lg" }: { size?: "sm" | "lg" }) {
 ═══════════════════════════════════════ */
 function Hero() {
   const ref = useRef<HTMLElement>(null);
+  const desktopVideoRef = useRef<HTMLVideoElement>(null);
+  const mobileVideoRef = useRef<HTMLVideoElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const videoY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
+
+  useEffect(() => {
+    // iOS Safari n'autorise l'autoplay que si l'attribut muted est posé sur le DOM, pas juste la prop React
+    for (const v of [desktopVideoRef.current, mobileVideoRef.current]) {
+      if (!v) continue;
+      v.muted = true;
+      v.setAttribute("muted", "");
+      v.play().catch(() => {});
+    }
+  }, []);
 
   return (
     <section
@@ -459,21 +489,23 @@ function Hero() {
       <div className="absolute inset-0 pointer-events-none">
         {/* Desktop : parallax */}
         <motion.video
-          autoPlay muted loop playsInline
+          ref={desktopVideoRef}
+          autoPlay muted loop playsInline preload="auto"
           className="absolute inset-0 w-full h-full object-cover hidden md:block"
-          style={{ y: videoY, filter: "saturate(0.6) brightness(0.55)", scale: 1.08 }}
+          style={{ y: videoY, filter: "saturate(0.75) brightness(0.75)", scale: 1.08 }}
         >
           <source src="/wedding-bg.mp4" type="video/mp4" />
         </motion.video>
         {/* Mobile : fixe */}
         <video
-          autoPlay muted loop playsInline
+          ref={mobileVideoRef}
+          autoPlay muted loop playsInline preload="auto"
           className="absolute inset-0 w-full h-full object-cover md:hidden"
-          style={{ filter: "saturate(0.5) brightness(0.45)" }}
+          style={{ filter: "saturate(0.7) brightness(0.68)" }}
         >
           <source src="/wedding-bg.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0" style={{ background: "rgba(8,5,3,0.72)" }} />
+        <div className="absolute inset-0" style={{ background: "rgba(8,5,3,0.52)" }} />
         <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 70% 50% at 60% 50%, rgba(192,150,80,0.06) 0%, transparent 70%)" }} />
       </div>
 
