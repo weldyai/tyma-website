@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     template: "%s | Tyma Makeup Artist",
   },
   description:
-    "Tyma est la maquilleuse professionnelle de référence au Maroc. Spécialisée en maquillage mariée, soirée, shooting photo et cours privés à Casablanca, Rabat, Marrakech. 11 ans d'expérience, 500+ clientes satisfaites, note 5 étoiles.",
+    "Tyma est la maquilleuse professionnelle de référence au Maroc. Spécialisée en maquillage mariée, soirée, shooting photo et cours privés à Casablanca, Rabat, Marrakech. 10+ ans d'expérience, 500+ clientes satisfaites, note 5 étoiles.",
   keywords: [
     "maquilleuse professionnelle Maroc",
     "makeup artist Maroc",
@@ -47,6 +47,14 @@ export const metadata: Metadata = {
     "beauty artist Maroc",
     "maquillage haut de gamme Maroc",
     "maquillage luxe Maroc",
+    "maquilleuse mariée marocaine",
+    "négafa Casablanca",
+    "wedding planner Maroc maquillage",
+    "styliste mariage Maroc",
+    "mariage marocain international",
+    "maquilleuse mariée marocaine étranger",
+    "maquillage keswa takchita",
+    "maquilleuse diaspora marocaine",
   ],
   authors: [{ name: "Tyma Makeup Artist" }],
   creator: "Tyma Makeup Artist",
@@ -73,7 +81,7 @@ export const metadata: Metadata = {
     siteName: "Tyma Makeup Artist",
     title: "Tyma Makeup Artist | Maquilleuse Professionnelle au Maroc",
     description:
-      "Maquilleuse professionnelle au Maroc. Mariages, soirées, shootings, cours privés. 11 ans d'expérience, 500+ clientes satisfaites, note 5★ Google.",
+      "Maquilleuse professionnelle au Maroc. Mariages, soirées, shootings, cours privés. 10+ ans d'expérience, 500+ clientes satisfaites, note 5★ Google.",
     images: [
       {
         url: "/og-image.jpg",
@@ -107,7 +115,7 @@ const jsonLd = {
       "@id": `${SITE_URL}/#webpage`,
       "url": SITE_URL,
       "name": "Tyma Makeup Artist | Maquilleuse Professionnelle au Maroc",
-      "description": "Tyma est une maquilleuse professionnelle au Maroc avec 11 ans d'expérience, spécialisée en maquillage mariée, soirée, shooting photo et cours privés. Elle intervient à Casablanca, Rabat, Marrakech, Fès, Tanger et partout au Maroc.",
+      "description": "Tyma est une maquilleuse professionnelle au Maroc avec 10+ ans d'expérience, spécialisée en maquillage mariée, soirée, shooting photo et cours privés. Elle intervient à Casablanca, Rabat, Marrakech, Fès, Tanger et partout au Maroc.",
       "inLanguage": "fr",
       "isPartOf": { "@id": `${SITE_URL}/#website` },
       "about": { "@id": `${SITE_URL}/#business` },
@@ -129,7 +137,7 @@ const jsonLd = {
       "@id": `${SITE_URL}/#business`,
       "name": "Tyma Makeup Artist",
       "alternateName": ["Tyma Beauty Makeup Artist Casablanca", "Tyma Beauty", "Tyma Makeup"],
-      "description": "Tyma est une maquilleuse professionnelle au Maroc avec plus de 11 ans d'expérience. Elle est spécialisée en maquillage de mariée avec essai inclus, maquillage de soirée et gala, maquillage pour shooting photo, et cours de maquillage privés. Elle a maquillé plus de 500 clientes satisfaites et dispose d'une note de 5 étoiles. Tyma se déplace à domicile ou reçoit en studio au Maroc.",
+      "description": "Tyma est une maquilleuse professionnelle au Maroc avec plus de 10 ans d'expérience. Elle est spécialisée en maquillage de mariée avec essai inclus, maquillage de soirée et gala, maquillage pour shooting photo, et cours de maquillage privés. Elle a maquillé plus de 500 clientes satisfaites et dispose d'une note de 5 étoiles. Tyma se déplace à domicile ou reçoit en studio au Maroc.",
       "url": SITE_URL,
       "telephone": "+212694863646",
       "priceRange": "$$",
@@ -250,7 +258,7 @@ const jsonLd = {
       "@id": `${SITE_URL}/#person`,
       "name": "Tyma",
       "jobTitle": "Maquilleuse professionnelle",
-      "description": "Tyma est une maquilleuse professionnelle marocaine avec plus de 11 ans d'expérience dans le maquillage de mariée, soirée et shooting photo. Elle a maquillé plus de 500 clientes au Maroc.",
+      "description": "Tyma est une maquilleuse professionnelle marocaine avec plus de 10 ans d'expérience dans le maquillage de mariée, soirée et shooting photo. Elle a maquillé plus de 500 clientes au Maroc.",
       "worksFor": { "@id": `${SITE_URL}/#business` },
       "sameAs": [
         "https://www.instagram.com/tymabeauty/",
@@ -331,6 +339,30 @@ const jsonLd = {
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Vous pouvez contacter Tyma Makeup Artist directement via WhatsApp au +212 6 94 86 36 46, ou via Instagram @tymabeauty. Elle répond sous 24h et propose un devis gratuit.",
+          },
+        },
+        {
+          "@type": "Question",
+          "name": "Quels produits et matériel utilise Tyma Makeup Artist ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tyma Makeup Artist travaille exclusivement avec des marques professionnelles haut de gamme : fonds de teint longue tenue et waterproof, produits HD conçus pour résister aux flashs et à la lumière des caméras, fixateurs professionnels, et produits vegan/hypoallergéniques adaptés aux peaux sensibles. Le matériel (pinceaux, éponges, applicateurs) est désinfecté et renouvelé après chaque prestation.",
+          },
+        },
+        {
+          "@type": "Question",
+          "name": "Tyma Makeup Artist travaille-t-elle avec des wedding planners, stylistes et négafas ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui, Tyma Makeup Artist collabore régulièrement avec les meilleurs wedding planners, stylistes et négafas du Maroc pour coordonner parfaitement le maquillage avec chaque tenue de la mariée (keswa, takchita, caftan, robe occidentale) tout au long des différentes étapes du mariage marocain traditionnel.",
+          },
+        },
+        {
+          "@type": "Question",
+          "name": "Tyma Makeup Artist propose-t-elle ses services pour les mariages marocains à l'international ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui, Tyma Makeup Artist se spécialise dans le maquillage de mariée marocaine, aussi bien pour les mariages traditionnels célébrés au Maroc que pour les mariages de la diaspora marocaine à l'étranger (Europe, Golfe, Amérique du Nord). Elle maîtrise les codes spécifiques de la mariée marocaine : plusieurs tenues et changements de look dans la même soirée, teint qui résiste à de longues heures de fête, et rendu impeccable sur toutes les photos et vidéos.",
           },
         },
       ],

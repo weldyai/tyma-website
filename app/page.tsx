@@ -143,6 +143,24 @@ const FAQ_ITEMS = [
     a: "Avec les produits fixateurs professionnels que j'utilise, le maquillage tient entre 12h et 16h selon les conditions. Idéal pour les longues journées de mariage.",
     ad: "بالمنتجات الثابتة المحترفة اللي كنخدم بيها، المكياج كيبقى بين 12 و 16 ساعة حسب الظروف. مثالي لنهار العرس الطويل.",
   },
+  {
+    q: "Quels produits et matériel utilisez-vous ?",
+    qd: "شنو هي المنتجات والمعدات اللي كتخدمي بيهم ؟",
+    a: "Je travaille exclusivement avec des marques professionnelles haut de gamme : fonds de teint longue tenue et waterproof, produits HD conçus pour résister aux flashs et à la lumière des caméras, fixateurs professionnels, et produits vegan/hypoallergéniques adaptés aux peaux sensibles. Mon matériel (pinceaux, éponges, applicateurs) est désinfecté et renouvelé après chaque prestation pour une hygiène irréprochable.",
+    ad: "كنخدم غير بماركات محترفة هاي كواليتي: فوندوطون طويل المفعول وواتربروف، منتجات HD لي كتقاوم الفلاش وضوء الكاميرا، منتجات ثابتة محترفة، ومنتجات vegan وهيبوالرجينيك للبشرة الحساسة. المعدات ديالي (فرشات، إسبونج) كتنظف وتتجدد بعد كل جلسة.",
+  },
+  {
+    q: "Travaillez-vous avec des wedding planners, stylistes et négafas ?",
+    qd: "كتخدمي مع wedding planners، ستيلست و نڭافات ؟",
+    a: "Oui, je collabore régulièrement avec les meilleurs wedding planners, stylistes et négafas du Maroc pour coordonner parfaitement le maquillage avec chaque tenue de la mariée (keswa, takchita, caftan, robe occidentale) tout au long des différentes étapes du mariage marocain traditionnel.",
+    ad: "إيه، كنخدم بزاف مع أحسن wedding planners، ستيلست و نڭافات فالمغرب باش نتوافقو المكياج مع كل تكة ديال العروسة (قسوة، تقشيطة، قفطان، روب) طول المراحل ديال العرس المغربي التقليدي.",
+  },
+  {
+    q: "Proposez-vous vos services pour les mariages marocains à l'international ?",
+    qd: "كتخدمي فالأعراس المغربية لي كايكونو برا المغرب ؟",
+    a: "Oui. Je me spécialise dans le maquillage de mariée marocaine, aussi bien pour les mariages traditionnels célébrés au Maroc que pour les mariages de la diaspora marocaine à l'étranger (Europe, Golfe, Amérique du Nord). Je maîtrise les codes spécifiques de la mariée marocaine : plusieurs tenues et changements de look dans la même soirée, teint qui résiste à de longues heures de fête, et rendu impeccable sur toutes les photos et vidéos.",
+    ad: "إيه. متخصصة فمكياج العروسة المغربية، سواء للأعراس التقليدية فالمغرب ولا للجالية المغربية فالخارج (أوروبا، الخليج، أمريكا الشمالية). كنتحكم فالتفاصيل ديال العروسة المغربية: بزاف ديال التبديلات ديال اللوك فنفس الليلة، بشرة لي كتصمد لساعات طويلة، ونتيجة نظيفة فكل الصور والفيديوهات.",
+  },
 ];
 
 const TESTIMONIALS = [
@@ -503,7 +521,7 @@ function Hero() {
             {/* Chips credentials */}
             <motion.div {...fadeUp(0.05)} className="flex flex-wrap gap-2 mb-7">
               {[
-                { label: "11 ans d'expérience" },
+                { label: "10+ ans d'expérience" },
                 { label: "500+ mariées" },
                 { label: "100+ shootings" },
                 { label: "Formation certifiée" },
@@ -545,7 +563,7 @@ function Hero() {
             {/* Stats */}
             <motion.div {...fadeUp(0.44)} className="grid grid-cols-2 gap-x-8 gap-y-6 mt-10 pt-8" style={{ borderTop: "1px solid rgba(192,150,80,0.18)" }}>
               {[
-                { num: "11+",   label: "ans d'expérience" },
+                { num: "10+",   label: "ans d'expérience" },
                 { num: "500+",  label: "mariées" },
                 { num: "100+",  label: "shooting photos" },
                 { num: "100+",  label: "maquilleuses formées" },
@@ -662,7 +680,10 @@ function Parcours() {
             <motion.p {...fadeUp(0.16)} className="text-base leading-relaxed mb-10 max-w-md" style={{ color: "var(--t1)" }}>
               Chaque prestation est le résultat d'années de formation, de pratique intense
               et d'un amour sincère pour l'art du maquillage. Mon engagement : révéler la beauté
-              unique de chaque cliente.
+              unique de chaque cliente. Je collabore avec les meilleurs wedding planners, stylistes
+              et négafas du Maroc, et me spécialise dans la mariée marocaine — au Maroc comme à
+              l'international pour la diaspora — avec une parfaite maîtrise des codes du mariage
+              traditionnel : keswa, takchita, changements de tenues et longues heures de fête.
             </motion.p>
 
             <motion.div {...fadeUp(0.22)} className="flex flex-wrap gap-3 mb-10">
@@ -691,7 +712,7 @@ function Parcours() {
 
         <motion.div {...fadeUp(0.1)} className="grid grid-cols-2 sm:grid-cols-4 gap-4">
           {[
-            { value: 11,  suffix: "+", decimalPlaces: 0, label: "Années d'expérience" },
+            { value: 10,  suffix: "+", decimalPlaces: 0, label: "Années d'expérience" },
             { value: 500, suffix: "+", decimalPlaces: 0, label: "Mariées sublimées" },
             { value: 100, suffix: "+", decimalPlaces: 0, label: "Shooting photos" },
             { value: 100, suffix: "+", decimalPlaces: 0, label: "Maquilleuses formées" },
@@ -781,7 +802,28 @@ function GuideBeaute() {
           Retrouvez les associations occasion → style → prestation recommandée.
         </motion.p>
 
-        <motion.div {...fadeUp(0.2)} className="overflow-x-auto rounded-2xl" style={{ border: "1px solid var(--glass-border)" }}>
+        {/* Mobile : cartes empilées, pas de scroll horizontal */}
+        <motion.div {...fadeUp(0.2)} className="flex flex-col gap-3 sm:hidden">
+          {GUIDE_ROWS.map((row, i) => (
+            <div
+              key={i}
+              className="rounded-2xl px-5 py-4"
+              style={{ border: "1px solid var(--glass-border)", background: "var(--s0)" }}
+            >
+              <div className="font-medium mb-1.5" style={{ color: "var(--t0)" }}>{row.occasion}</div>
+              <div className="text-sm mb-3" style={{ color: "var(--t1)" }}>{row.style}</div>
+              <span
+                className="inline-block px-3 py-1 rounded-full text-xs font-medium"
+                style={{ background: "var(--s2)", color: "var(--gold-dim)", border: "1px solid var(--glass-border)" }}
+              >
+                {row.prestation}
+              </span>
+            </div>
+          ))}
+        </motion.div>
+
+        {/* Desktop / tablette : tableau */}
+        <motion.div {...fadeUp(0.2)} className="hidden sm:block overflow-x-auto rounded-2xl" style={{ border: "1px solid var(--glass-border)" }}>
           <table className="w-full text-sm border-collapse">
             <thead>
               <tr style={{ background: "var(--t0)", color: "var(--s0)" }}>
@@ -1050,7 +1092,6 @@ function InstagramCTA() {
 ═══════════════════════════════════════ */
 function FAQ() {
   const [open, setOpen] = useState<number | null>(null);
-  const [lang, setLang] = useState<"fr" | "dr">("fr");
 
   return (
     <section id="faq" className="py-28" style={{ background: "var(--s0)" }}>
@@ -1063,32 +1104,6 @@ function FAQ() {
             Vous avez une question ?<br />
             <span style={{ color: "var(--gold)", fontStyle: "italic" }}>On a la réponse</span>
           </motion.h2>
-          <motion.div {...fadeUp(0.14)} className="inline-flex mt-6 rounded-full p-1" style={{ background: "var(--s2)", border: "1px solid var(--glass-border)" }}>
-            <button
-              onClick={() => setLang("fr")}
-              className="px-4 py-1.5 rounded-full text-xs transition-all duration-200 cursor-pointer"
-              style={{
-                background: lang === "fr" ? "var(--gold)" : "transparent",
-                color: lang === "fr" ? "var(--t0)" : "var(--t2)",
-                fontFamily: "var(--font-body)",
-                fontWeight: lang === "fr" ? 600 : 400,
-              }}
-            >
-              Français
-            </button>
-            <button
-              onClick={() => setLang("dr")}
-              className="px-4 py-1.5 rounded-full text-xs transition-all duration-200 cursor-pointer"
-              style={{
-                background: lang === "dr" ? "var(--gold)" : "transparent",
-                color: lang === "dr" ? "var(--t0)" : "var(--t2)",
-                fontFamily: "var(--font-body)",
-                fontWeight: lang === "dr" ? 600 : 400,
-              }}
-            >
-              الدارجة
-            </button>
-          </motion.div>
         </div>
 
         <div className="flex flex-col gap-3">
@@ -1101,14 +1116,18 @@ function FAQ() {
                   border: `1px solid ${open === i ? "rgba(192,150,80,0.35)" : "var(--glass-border)"}`,
                 }}
                 onClick={() => setOpen(open === i ? null : i)}
-                dir={lang === "dr" ? "rtl" : "ltr"}
               >
-                <span className="text-sm font-semibold leading-snug" style={{ color: "var(--t0)", fontFamily: "var(--font-body)" }}>
-                  {lang === "fr" ? item.q : item.qd}
-                </span>
+                <div className="flex flex-col gap-1">
+                  <span className="text-sm font-semibold leading-snug" style={{ color: "var(--t0)", fontFamily: "var(--font-body)" }}>
+                    {item.q}
+                  </span>
+                  <span className="text-sm leading-snug" style={{ color: "var(--t2)", fontFamily: "var(--font-body)" }} dir="rtl">
+                    {item.qd}
+                  </span>
+                </div>
                 <svg
                   viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}
-                  className="shrink-0 transition-transform duration-200"
+                  className="shrink-0 transition-transform duration-200 mt-1"
                   style={{ width: 18, height: 18, color: "var(--gold)", transform: open === i ? "rotate(180deg)" : "rotate(0deg)" }}
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
@@ -1116,11 +1135,15 @@ function FAQ() {
               </button>
               {open === i && (
                 <div
-                  className="px-5 pb-5 pt-3 text-sm leading-relaxed rounded-b-2xl -mt-2"
-                  style={{ background: "var(--s1)", color: "var(--t1)", fontFamily: "var(--font-body)", borderLeft: "1px solid rgba(192,150,80,0.35)", borderRight: "1px solid rgba(192,150,80,0.35)", borderBottom: "1px solid rgba(192,150,80,0.35)" }}
-                  dir={lang === "dr" ? "rtl" : "ltr"}
+                  className="px-5 pb-5 pt-3 rounded-b-2xl -mt-2 flex flex-col gap-3"
+                  style={{ background: "var(--s1)", borderLeft: "1px solid rgba(192,150,80,0.35)", borderRight: "1px solid rgba(192,150,80,0.35)", borderBottom: "1px solid rgba(192,150,80,0.35)" }}
                 >
-                  {lang === "fr" ? item.a : item.ad}
+                  <p className="text-sm leading-relaxed" style={{ color: "var(--t1)", fontFamily: "var(--font-body)" }}>
+                    {item.a}
+                  </p>
+                  <p className="text-sm leading-relaxed pt-3" style={{ color: "var(--t2)", fontFamily: "var(--font-body)", borderTop: "1px solid var(--glass-border)" }} dir="rtl">
+                    {item.ad}
+                  </p>
                 </div>
               )}
             </motion.div>
