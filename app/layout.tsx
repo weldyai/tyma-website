@@ -137,7 +137,7 @@ const jsonLd = {
       "@type": ["BeautyBusiness", "LocalBusiness"],
       "@id": `${SITE_URL}/#business`,
       "name": "Tyma Makeup Artist",
-      "alternateName": ["Tyma Beauty Makeup Artist Casablanca", "Tyma Beauty", "Tyma Makeup"],
+      "alternateName": ["Tyma Makeup Artist Casablanca", "Tyma Beauty", "Tyma Makeup"],
       "description": "Tyma est une maquilleuse professionnelle au Maroc avec plus de 10 ans d'expérience. Elle est spécialisée en maquillage de mariée avec essai inclus, maquillage de soirée et gala, maquillage pour shooting photo, et cours de maquillage privés. Elle a maquillé plus de 500 clientes satisfaites et dispose d'une note de 5 étoiles. Tyma se déplace à domicile ou reçoit en studio au Maroc.",
       "url": SITE_URL,
       "telephone": "+212694863646",

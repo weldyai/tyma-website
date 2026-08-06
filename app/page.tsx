@@ -1245,7 +1245,7 @@ function Acces() {
                   <div>
                     <div className="type-label mb-0.5" style={{ color: "var(--t2)", fontSize: "0.58rem" }}>Localisation</div>
                     <a href={GOOGLE_MAPS} target="_blank" rel="noopener noreferrer" className="text-sm font-medium hover:opacity-70 transition-opacity" style={{ color: "var(--t0)" }}>
-                      Tyma Beauty Makeup Artist · Casablanca, Maroc
+                      Tyma Makeup Artist · Casablanca, Maroc
                     </a>
                     <div className="flex flex-col sm:flex-row gap-3 mt-4 w-full">
                       {/* Google Maps */}
