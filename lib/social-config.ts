@@ -30,7 +30,7 @@ export const SOCIAL_NETWORKS: SocialNetwork[] = [
   {
     id: 'facebook',
     name: 'Facebook',
-    url: 'https://web.facebook.com/beautytyma/',
+    url: 'https://web.facebook.com/tymamakeupartist/',
     color: '#1877F2',
     bgHover: 'rgba(24,119,242,0.1)',
     active: true,

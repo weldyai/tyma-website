@@ -176,7 +176,7 @@ const jsonLd = {
       ],
       "sameAs": [
         "https://www.instagram.com/tymabeauty/",
-        "https://web.facebook.com/beautytyma/",
+        "https://web.facebook.com/tymamakeupartist/",
         "https://www.tiktok.com/@tyma.beauty",
         "https://www.youtube.com/@TymaBeauty",
         "https://maps.app.goo.gl/zGSM3uYb2D1Eqwiq8",
@@ -263,7 +263,7 @@ const jsonLd = {
       "worksFor": { "@id": `${SITE_URL}/#business` },
       "sameAs": [
         "https://www.instagram.com/tymabeauty/",
-        "https://www.facebook.com/beautytyma/",
+        "https://www.facebook.com/tymamakeupartist/",
       ],
     },
     {
