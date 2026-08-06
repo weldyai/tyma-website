@@ -402,6 +402,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               'https://connect.facebook.net/en_US/fbevents.js');
               fbq('init', '1934670790528925');
               fbq('track', 'PageView');
+
+              document.addEventListener('click', function(e) {
+                var link = e.target.closest ? e.target.closest('a[href*="wa.me"]') : null;
+                if (link && window.fbq) {
+                  fbq('track', 'Contact');
+                }
+              }, true);
             `,
           }}
         />
