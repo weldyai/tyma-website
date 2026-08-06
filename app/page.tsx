@@ -683,10 +683,14 @@ function Parcours() {
               </SparklesText>
             </motion.h2>
             <motion.p {...fadeUp(0.16)} className="text-base leading-relaxed mb-10 max-w-md" style={{ color: "var(--t1)" }}>
-              Chaque prestation est le résultat d'années de formation, de pratique intense
-              et d'un amour sincère pour l'art du maquillage. Mon engagement : révéler la beauté
-              unique de chaque cliente. Je collabore avec les meilleurs wedding planners, stylistes
-              et négafas du Maroc, et me spécialise dans la mariée marocaine — au Maroc comme à
+              Tyma est makeup artist professionnelle à Casablanca depuis plus de 10 ans,
+              reconnue pour son glamour lumineux et sa parfaite maîtrise du maquillage traditionnel
+              marocain. Elle accompagne les mariées à Casablanca, Rabat, Marrakech et Fès, ainsi
+              que les mariées internationales qui célèbrent leur mariage au Maroc. Chaque
+              prestation est le résultat d'années de formation, de pratique intense et d'un amour
+              sincère pour l'art du maquillage. Mon engagement : révéler la beauté unique de
+              chaque cliente. Je collabore avec les meilleurs wedding planners, stylistes et
+              négafas du Maroc, et me spécialise dans la mariée marocaine — au Maroc comme à
               l'international pour la diaspora — avec une parfaite maîtrise des codes du mariage
               traditionnel : keswa, takchita, changements de tenues et longues heures de fête.
             </motion.p>
