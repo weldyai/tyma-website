@@ -537,10 +537,11 @@ function Hero() {
               ))}
             </motion.div>
 
-            <motion.h1 {...fadeUp(0.1)} className="type-display mb-1" style={{ color: "rgba(253,252,249,0.9)" }}>
+            <h1 className="sr-only">Makeup Artist professionnelle à Casablanca — Maquillage mariage Maroc</h1>
+            <motion.p {...fadeUp(0.1)} aria-hidden="true" className="type-display mb-1" style={{ color: "rgba(253,252,249,0.9)" }}>
               Votre beauté
-            </motion.h1>
-            <motion.h1 {...fadeUp(0.18)} className="type-hero-italic mb-6">
+            </motion.p>
+            <motion.p {...fadeUp(0.18)} aria-hidden="true" className="type-hero-italic mb-6">
               <AnimatedGradientText
                 colorFrom="#C09650"
                 colorVia="#EAD4A0"
@@ -549,7 +550,7 @@ function Hero() {
               >
                 entre des mains expertes
               </AnimatedGradientText>
-            </motion.h1>
+            </motion.p>
 
             {/* Portrait — mobile uniquement, sous le titre */}
             <motion.div {...fadeUp(0.22)} className="flex flex-col items-center md:hidden mb-8 gap-4">
@@ -655,7 +656,7 @@ function GalleryPhotoMarquee() {
             className="mx-4 rounded-xl overflow-hidden shrink-0"
             style={{ width: 240, height: 310, boxShadow: "0 12px 32px rgba(12,10,7,0.15)" }}
           >
-            <img src={src} alt="Tyma – mariée" className="w-full h-full object-cover object-top" loading="lazy" />
+            <img src={src} alt="Maquillage mariée par Tyma, makeup artist à Casablanca" className="w-full h-full object-cover object-top" loading="lazy" />
           </div>
         ))}
       </div>
