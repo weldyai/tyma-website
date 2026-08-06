@@ -686,7 +686,9 @@ function Parcours() {
             <motion.p {...fadeUp(0.16)} className="text-base leading-relaxed mb-10 max-w-md" style={{ color: "var(--t1)" }}>
               Tyma est makeup artist professionnelle à Casablanca depuis plus de 10 ans,
               reconnue pour son glamour lumineux et sa parfaite maîtrise du maquillage traditionnel
-              marocain. Elle accompagne les mariées à Casablanca, Rabat, Marrakech et Fès, ainsi
+              marocain. Elle accompagne les mariées à <a href="/maquillage-mariage-casablanca" className="underline decoration-[var(--gold)] underline-offset-2">Casablanca</a>,{" "}
+              <a href="/maquillage-mariage-rabat" className="underline decoration-[var(--gold)] underline-offset-2">Rabat</a>,{" "}
+              <a href="/wedding-makeup-marrakech" className="underline decoration-[var(--gold)] underline-offset-2">Marrakech</a> et Fès, ainsi
               que les mariées internationales qui célèbrent leur mariage au Maroc. Chaque
               prestation est le résultat d'années de formation, de pratique intense et d'un amour
               sincère pour l'art du maquillage. Mon engagement : révéler la beauté unique de
@@ -1482,6 +1484,21 @@ function Footer() {
         </div>
 
         <div className="gold-line my-8" />
+
+        <div className="flex flex-wrap gap-x-6 gap-y-2 mb-6">
+          {[
+            { href: "/maquillage-mariage-casablanca", label: "Maquillage Mariage Casablanca" },
+            { href: "/maquillage-mariage-rabat", label: "Maquillage Mariage Rabat" },
+            { href: "/wedding-makeup-marrakech", label: "Wedding Makeup Marrakech" },
+            { href: "/tarifs", label: "Tarifs" },
+          ].map((l) => (
+            <a key={l.href} href={l.href} className="text-xs transition-colors hover:text-[var(--gold-pale)]" style={{ color: "var(--s4)" }}>
+              {l.label}
+            </a>
+          ))}
+        </div>
+
+        <div className="gold-line mb-8" />
 
         <div className="flex flex-col sm:flex-row justify-between items-center gap-3 text-xs" style={{ color: "var(--s4)" }}>
           <span>© 2026 Tyma Makeup Artist. Tous droits réservés.</span>
