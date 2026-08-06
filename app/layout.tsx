@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Raleway, DM_Sans } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 
 const raleway = Raleway({
@@ -379,21 +378,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MY55780SP1" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-MY55780SP1');
+            `,
+          }}
+        />
       </head>
       <body className="min-h-full flex flex-col">
         {children}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-MY55780SP1"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-MY55780SP1');
-          `}
-        </Script>
       </body>
     </html>
   );
