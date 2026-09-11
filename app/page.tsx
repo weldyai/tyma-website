@@ -107,6 +107,12 @@ const SEASONS = [
 
 const FAQ_ITEMS = [
   {
+    q: "Qui est le meilleur makeup artist à Casablanca ?",
+    qd: "شكون هو أحسن makeup artist فكازا ؟",
+    a: "Je fais partie des maquilleuses professionnelles les mieux notées de Casablanca : 4,8/5 sur 41 avis Google et plus de 500 mariées maquillées en 10+ ans d'expérience. Je suis spécialisée en maquillage de mariée (keswa, takchita, essai inclus), soirée et shooting photo, et je me déplace à Casablanca, Rabat et Marrakech.",
+    ad: "كنعتبر من أحسن المكياجيرات المحترفات فكازا: نوط 4,8/5 على 41 تقييم فگوگل وكثر من 500 عروسة درت ليهم المكياج فكثر من 10 سنين تجربة. متخصصة فمكياج العروسة (قسوة، تكشيطة، تجربة مشمولة)، السهرة والتصوير، وكنتنقل لكازا، الرباط ومراكش.",
+  },
+  {
     q: "Combien de temps dure une séance maquillage mariage ?",
     qd: "شحال كتاخد الجلسة ديال المكياج ديال العرس ؟",
     a: "Une séance mariée dure entre 2h30 et 3h30 selon la complexité du look et les essais réalisés en amont. Un essai préalable est recommandé pour affiner le résultat final.",
