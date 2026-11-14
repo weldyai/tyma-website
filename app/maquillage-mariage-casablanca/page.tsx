@@ -10,7 +10,7 @@ const PAGE_URL = `${SITE_URL}/maquillage-mariage-casablanca`;
 export const metadata: Metadata = {
   title: "Makeup Artist Casablanca — Maquillage Mariée",
   description:
-    "Tyma, makeup artist professionnelle à Casablanca. Maquillage mariée, essai inclus, keswa et takchita, 10+ ans d'expérience, 500+ mariées, note 4,8/5 sur Google.",
+    "Tyma, makeup artist professionnelle à Casablanca. Maquillage mariée, essai inclus, keswa et takchita, 11+ ans d'expérience, 500+ mariées, note 4,8/5 sur Google.",
   alternates: { canonical: PAGE_URL },
   openGraph: {
     type: "website",
@@ -74,7 +74,7 @@ export default function CasablancaPage() {
               <span style={{ color: "var(--gold)", fontStyle: "italic" }}>pour votre mariage</span>
             </h1>
             <p className="text-base leading-relaxed max-w-2xl mb-8" style={{ color: "var(--t1)" }}>
-              Tyma est makeup artist professionnelle à Casablanca depuis plus de 10 ans, spécialisée
+              Tyma est makeup artist professionnelle à Casablanca depuis plus de 11 ans, spécialisée
               dans le maquillage de mariée. Plus de 500 mariées sublimées, note 4,8/5 sur Google (44 avis).
               Essai inclus, déplacement à domicile ou sur le lieu de l&apos;événement à Casablanca et ses environs,
               maquillage longue tenue conçu pour résister 12 à 16h — du matin jusqu&apos;au bout de la nuit.

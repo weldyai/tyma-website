@@ -83,7 +83,7 @@ export default function FormationMaquillageCasablancaPage() {
               <span style={{ color: "var(--gold)" }}>à Casablanca</span>
             </h1>
             <p className="text-base leading-relaxed max-w-2xl mb-8" style={{ color: "var(--t1)" }}>
-              Apprenez le maquillage avec Tyma, makeup artist professionnelle à Casablanca depuis plus de 10 ans.
+              Apprenez le maquillage avec Tyma, makeup artist professionnelle à Casablanca depuis plus de 11 ans.
               Plus de 100 maquilleuses formées, formation individuelle ou en groupe, tous niveaux.
             </p>
             <div className="flex flex-wrap gap-3">
@@ -131,7 +131,7 @@ export default function FormationMaquillageCasablancaPage() {
             </h2>
             <div className="grid sm:grid-cols-2 gap-5">
               {[
-                { title: "10+ ans d'expérience", text: "Plus de dix ans de pratique professionnelle du maquillage à Casablanca." },
+                { title: "11+ ans d'expérience", text: "Plus de onze ans de pratique professionnelle du maquillage à Casablanca." },
                 { title: "100+ maquilleuses formées", text: "Une expérience concrète de la transmission, auprès de profils variés." },
                 { title: "Global Beauty Academy", text: "Tyma est propriétaire de Global Beauty Academy, centre de formation maquillage et coiffure à Casablanca." },
                 { title: "500+ mariées", text: "Un savoir-faire éprouvé sur le terrain, que vous retrouvez dans l'enseignement." },

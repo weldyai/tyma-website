@@ -37,7 +37,7 @@ export function LandingHeader({ homeLabel = "Accueil" }: { homeLabel?: string })
           </a>
         </nav>
 
-        <button className="md:hidden p-2" onClick={() => setOpen((v) => !v)} aria-label="Menu">
+        <button className="md:hidden p-2 min-w-[44px] min-h-[44px] flex items-center justify-center" onClick={() => setOpen((v) => !v)} aria-label="Menu">
           <div className="w-6 flex flex-col gap-1.5">
             <span className={`block h-px transition-all duration-300 origin-center ${open ? "rotate-45 translate-y-[7px]" : ""}`} style={{ background: "var(--t0)" }} />
             <span className={`block h-px transition-all duration-300 ${open ? "opacity-0" : ""}`} style={{ background: "var(--t0)" }} />

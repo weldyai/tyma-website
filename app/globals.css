@@ -79,7 +79,7 @@ body {
 }
 .type-label {
   font-family: var(--font-body), sans-serif;
-  font-size: 0.65rem;
+  font-size: 0.6875rem;
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -199,7 +199,9 @@ body {
 
 @media (max-width: 480px) {
   .avail-float { right: 84px; bottom: 22px; padding: 9px 11px; border-radius: 13px; }
-  .avail-float .type-label { font-size: 0.44rem !important; margin-bottom: 4px !important; }
+  .avail-float .type-label { font-size: 0.6875rem !important; margin-bottom: 4px !important; }
+  .avail-float .avail-rows { flex-direction: row; gap: 12px; }
+  .avail-float .avail-bar { display: none; }
 }
 
 /* ── SHIMMER LINE ── */

@@ -109,7 +109,7 @@ const FAQ_ITEMS = [
   {
     q: "Qui est le meilleur makeup artist à Casablanca ?",
     qd: "شكون هو أحسن makeup artist فكازا ؟",
-    a: "Je fais partie des maquilleuses professionnelles les mieux notées de Casablanca : 4,8/5 sur 44 avis Google et plus de 500 mariées maquillées en 10+ ans d'expérience. Je suis spécialisée en maquillage de mariée (keswa, takchita, essai inclus), soirée et shooting photo, et je me déplace à Casablanca, Rabat et Marrakech.",
+    a: "Je fais partie des maquilleuses professionnelles les mieux notées de Casablanca : 4,8/5 sur 44 avis Google et plus de 500 mariées maquillées en 11+ ans d'expérience. Je suis spécialisée en maquillage de mariée (keswa, takchita, essai inclus), soirée et shooting photo, et je me déplace à Casablanca, Rabat et Marrakech.",
     ad: "كنعتبر من أحسن المكياجيرات المحترفات فكازا: نوط 4,8/5 على 44 تقييم فگوگل وكثر من 500 عروسة درت ليهم المكياج فكثر من 10 سنين تجربة. متخصصة فمكياج العروسة (قسوة، تكشيطة، تجربة مشمولة)، السهرة والتصوير، وكنتنقل لكازا، الرباط ومراكش.",
   },
   {
@@ -361,7 +361,7 @@ function Header() {
         </nav>
 
         {/* Burger */}
-        <button className="md:hidden p-2" onClick={() => setMobileOpen(v => !v)}>
+        <button className="md:hidden p-2 min-w-[44px] min-h-[44px] flex items-center justify-center" aria-label="Menu" onClick={() => setMobileOpen(v => !v)}>
           <div className="w-6 flex flex-col gap-1.5">
             <span className={`block h-px transition-all duration-300 origin-center ${mobileOpen ? "rotate-45 translate-y-[7px]" : ""}`} style={{ background: scrolled || mobileOpen ? "var(--t0)" : "var(--s0)" }} />
             <span className={`block h-px transition-all duration-300 ${mobileOpen ? "opacity-0" : ""}`} style={{ background: scrolled || mobileOpen ? "var(--t0)" : "var(--s0)" }} />
@@ -529,7 +529,7 @@ function Hero() {
             {/* Chips credentials */}
             <motion.div {...fadeUp(0.05)} className="flex flex-wrap gap-2 mb-7">
               {[
-                { label: "10+ ans d'expérience" },
+                { label: "11+ ans d'expérience" },
                 { label: "500+ mariées" },
                 { label: "100+ shootings" },
                 { label: "Formation certifiée" },
@@ -560,7 +560,7 @@ function Hero() {
               <PortraitGlow size="sm" />
               <div className="text-center">
                 <div style={{ fontFamily: "var(--font-display)", fontSize: "1.3rem", color: "rgba(253,252,249,0.85)", fontWeight: 200, letterSpacing: "0.18em" }}>Tyma</div>
-                <div style={{ fontFamily: "var(--font-body)", fontSize: "0.55rem", color: "rgba(192,150,80,0.65)", fontWeight: 400, letterSpacing: "0.28em", textTransform: "uppercase" }}>Makeup Artist · Maroc</div>
+                <div style={{ fontFamily: "var(--font-body)", fontSize: "0.6875rem", color: "rgba(192,150,80,0.65)", fontWeight: 400, letterSpacing: "0.28em", textTransform: "uppercase" }}>Makeup Artist · Maroc</div>
               </div>
             </motion.div>
 
@@ -572,14 +572,14 @@ function Hero() {
             {/* Stats */}
             <motion.div {...fadeUp(0.44)} className="grid grid-cols-2 gap-x-8 gap-y-6 mt-10 pt-8" style={{ borderTop: "1px solid rgba(192,150,80,0.18)" }}>
               {[
-                { num: "10+",   label: "ans d'expérience" },
+                { num: "11+",   label: "ans d'expérience" },
                 { num: "500+",  label: "mariées" },
                 { num: "100+",  label: "shooting photos" },
                 { num: "100+",  label: "maquilleuses formées" },
               ].map((s, i) => (
                 <div key={i}>
                   <div style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.2rem, 5vw, 3.2rem)", color: "#EAD4A0", fontWeight: 200, letterSpacing: "-0.03em", lineHeight: 1 }}>{s.num}</div>
-                  <div style={{ fontFamily: "var(--font-body)", fontSize: "0.58rem", color: "rgba(202,185,154,0.5)", fontWeight: 400, letterSpacing: "0.1em", textTransform: "uppercase", marginTop: "0.35rem" }}>{s.label}</div>
+                  <div style={{ fontFamily: "var(--font-body)", fontSize: "0.6875rem", color: "rgba(202,185,154,0.5)", fontWeight: 400, letterSpacing: "0.1em", textTransform: "uppercase", marginTop: "0.35rem" }}>{s.label}</div>
                 </div>
               ))}
             </motion.div>
@@ -600,7 +600,7 @@ function Hero() {
               <div style={{ fontFamily: "var(--font-display)", fontSize: "1.6rem", color: "rgba(253,252,249,0.88)", fontWeight: 200, letterSpacing: "0.18em" }}>
                 Tyma
               </div>
-              <div style={{ fontFamily: "var(--font-body)", fontSize: "0.58rem", color: "rgba(192,150,80,0.7)", fontWeight: 400, letterSpacing: "0.3em", textTransform: "uppercase", marginTop: "0.3rem" }}>
+              <div style={{ fontFamily: "var(--font-body)", fontSize: "0.6875rem", color: "rgba(192,150,80,0.7)", fontWeight: 400, letterSpacing: "0.3em", textTransform: "uppercase", marginTop: "0.3rem" }}>
                 Makeup Artist · Maroc
               </div>
             </motion.div>
@@ -687,7 +687,7 @@ function Parcours() {
               </SparklesText>
             </motion.h2>
             <motion.p {...fadeUp(0.16)} className="text-base leading-relaxed mb-10 max-w-md" style={{ color: "var(--t1)" }}>
-              Tyma est makeup artist professionnelle à Casablanca depuis plus de 10 ans,
+              Tyma est makeup artist professionnelle à Casablanca depuis plus de 11 ans,
               reconnue pour son glamour lumineux et sa parfaite maîtrise du maquillage traditionnel
               marocain. Elle accompagne les mariées à <a href="/maquillage-mariage-casablanca" className="underline decoration-[var(--gold)] underline-offset-2">Casablanca</a>,{" "}
               <a href="/maquillage-mariage-rabat" className="underline decoration-[var(--gold)] underline-offset-2">Rabat</a>,{" "}
@@ -727,7 +727,7 @@ function Parcours() {
 
         <motion.div {...fadeUp(0.1)} className="grid grid-cols-2 sm:grid-cols-4 gap-4">
           {[
-            { value: 10,  suffix: "+", decimalPlaces: 0, label: "Années d'expérience" },
+            { value: 11,  suffix: "+", decimalPlaces: 0, label: "Années d'expérience" },
             { value: 500, suffix: "+", decimalPlaces: 0, label: "Mariées sublimées" },
             { value: 100, suffix: "+", decimalPlaces: 0, label: "Shooting photos" },
             { value: 100, suffix: "+", decimalPlaces: 0, label: "Maquilleuses formées" },
@@ -740,7 +740,7 @@ function Parcours() {
                 className="type-num"
                 style={{ color: "var(--t0)", fontSize: "clamp(2.8rem, 5vw, 4.5rem)", fontWeight: 200 }}
               />
-              <div className="type-label mt-2" style={{ color: "var(--t1)", fontSize: "0.6rem" }}>{s.label}</div>
+              <div className="type-label mt-2" style={{ color: "var(--t1)", fontSize: "0.6875rem" }}>{s.label}</div>
             </div>
           ))}
         </motion.div>
@@ -779,12 +779,12 @@ function Prestations() {
                   <span className="text-3xl">{s.icon}</span>
                   <span className="type-num" style={{ color: "var(--s3)", fontSize: "2rem" }}>{s.num}</span>
                 </div>
-                <div className="type-label mb-1.5" style={{ color: "var(--gold)", fontSize: "0.58rem" }}>{s.tag}</div>
+                <div className="type-label mb-1.5" style={{ color: "var(--gold)", fontSize: "0.6875rem" }}>{s.tag}</div>
                 <h3 className="text-lg font-semibold mb-3" style={{ color: "var(--t0)", fontFamily: "var(--font-display)" }}>{s.title}</h3>
                 <p className="text-sm leading-relaxed flex-1" style={{ color: "var(--t1)" }}>{s.desc}</p>
                 <div className="mt-5 pt-4" style={{ borderTop: "1px solid var(--glass-border)" }}>
                   <a href={WHATSAPP} target="_blank" rel="noopener noreferrer"
-                    className="type-label text-xs transition-colors hover:text-[var(--gold)]"
+                    className="type-label text-xs inline-flex items-center min-h-[44px] transition-colors hover:text-[var(--gold)]"
                     style={{ color: "var(--t1)" }}>
                     Réserver →
                   </a>
@@ -842,9 +842,9 @@ function GuideBeaute() {
           <table className="w-full text-sm border-collapse">
             <thead>
               <tr style={{ background: "var(--t0)", color: "var(--s0)" }}>
-                <th className="text-left px-6 py-4 type-label" style={{ fontSize: "0.6rem", letterSpacing: "0.22em" }}>Occasion</th>
-                <th className="text-left px-6 py-4 type-label" style={{ fontSize: "0.6rem", letterSpacing: "0.22em" }}>Style recommandé</th>
-                <th className="text-left px-6 py-4 type-label" style={{ fontSize: "0.6rem", letterSpacing: "0.22em" }}>Prestation</th>
+                <th className="text-left px-6 py-4 type-label" style={{ fontSize: "0.6875rem", letterSpacing: "0.22em" }}>Occasion</th>
+                <th className="text-left px-6 py-4 type-label" style={{ fontSize: "0.6875rem", letterSpacing: "0.22em" }}>Style recommandé</th>
+                <th className="text-left px-6 py-4 type-label" style={{ fontSize: "0.6875rem", letterSpacing: "0.22em" }}>Prestation</th>
               </tr>
             </thead>
             <tbody>
@@ -976,7 +976,7 @@ function ReelCard({ reel, index }: { reel: Reel; index: number }) {
             {/* Label bas */}
             <div className="absolute bottom-0 left-0 right-0 p-4">
               <div className="text-sm font-semibold" style={{ color: "white", fontFamily: "var(--font-display)", fontStyle: "italic" }}>{reel.label}</div>
-              <div className="type-label mt-0.5" style={{ color: "rgba(234,212,160,0.7)", fontSize: "0.52rem" }}>YouTube Short</div>
+              <div className="type-label mt-0.5" style={{ color: "rgba(234,212,160,0.7)", fontSize: "0.6875rem" }}>YouTube Short</div>
             </div>
           </>
         )}
@@ -1250,7 +1250,7 @@ function Acces() {
                     </svg>
                   </div>
                   <div>
-                    <div className="type-label mb-0.5" style={{ color: "var(--t2)", fontSize: "0.58rem" }}>Localisation</div>
+                    <div className="type-label mb-0.5" style={{ color: "var(--t2)", fontSize: "0.6875rem" }}>Localisation</div>
                     <a href={GOOGLE_MAPS} target="_blank" rel="noopener noreferrer" className="text-sm font-medium hover:opacity-70 transition-opacity" style={{ color: "var(--t0)" }}>
                       Tyma Makeup Artist · Casablanca, Maroc
                     </a>
@@ -1280,7 +1280,7 @@ function Acces() {
                           <circle fill="#4285F4" cx="96" cy="80" r="16"/>
                         </svg>
                         <div style={{ lineHeight: 1.2 }}>
-                          <div style={{ fontSize: "0.6rem", color: "#888", fontFamily: "var(--font-body)", letterSpacing: "0.06em", textTransform: "uppercase" }}>Ouvrir dans</div>
+                          <div style={{ fontSize: "0.6875rem", color: "#888", fontFamily: "var(--font-body)", letterSpacing: "0.06em", textTransform: "uppercase" }}>Ouvrir dans</div>
                           <div style={{ fontSize: "0.85rem", fontWeight: 600, color: "var(--t0)", fontFamily: "var(--font-body)" }}>Google Maps</div>
                         </div>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="ml-auto shrink-0" style={{ width: 16, height: 16, color: "#aaa" }}>
@@ -1314,7 +1314,7 @@ function Acces() {
                           <circle cx="44" cy="20" r="3" fill="#FFD93D"/>
                         </svg>
                         <div style={{ lineHeight: 1.2 }}>
-                          <div style={{ fontSize: "0.6rem", color: "rgba(255,255,255,0.75)", fontFamily: "var(--font-body)", letterSpacing: "0.06em", textTransform: "uppercase" }}>Naviguer avec</div>
+                          <div style={{ fontSize: "0.6875rem", color: "rgba(255,255,255,0.75)", fontFamily: "var(--font-body)", letterSpacing: "0.06em", textTransform: "uppercase" }}>Naviguer avec</div>
                           <div style={{ fontSize: "0.85rem", fontWeight: 600, color: "#ffffff", fontFamily: "var(--font-body)" }}>Waze</div>
                         </div>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="ml-auto shrink-0" style={{ width: 16, height: 16, color: "rgba(255,255,255,0.7)" }}>
@@ -1455,7 +1455,7 @@ function Footer() {
             <div className="mb-1" style={{ fontFamily: "var(--font-display)", fontSize: "1.3rem", color: "var(--s0)", fontWeight: 300, letterSpacing: "0.08em" }}>
               Tyma
             </div>
-            <div className="type-label" style={{ color: "var(--s3)", fontSize: "0.55rem" }}>
+            <div className="type-label" style={{ color: "var(--s3)", fontSize: "0.6875rem" }}>
               Maquilleuse professionnelle · Maroc
             </div>
           </div>
@@ -1463,7 +1463,7 @@ function Footer() {
             {NAV_LINKS.map(l => (
               <a key={l.href} href={l.href}
                 className="type-label transition-colors hover:text-[var(--gold-pale)]"
-                style={{ color: "var(--s3)", fontSize: "0.58rem" }}>
+                style={{ color: "var(--s3)", fontSize: "0.6875rem" }}>
                 {l.label}
               </a>
             ))}
@@ -1497,7 +1497,7 @@ function Footer() {
             { href: "/wedding-makeup-marrakech", label: "Wedding Makeup Marrakech" },
             { href: "/tarifs", label: "Tarifs" },
           ].map((l) => (
-            <a key={l.href} href={l.href} className="text-xs transition-colors hover:text-[var(--gold-pale)]" style={{ color: "var(--s4)" }}>
+            <a key={l.href} href={l.href} className="text-xs inline-block py-3 transition-colors hover:text-[var(--gold-pale)]" style={{ color: "var(--s4)" }}>
               {l.label}
             </a>
           ))}
@@ -1541,16 +1541,16 @@ function AvailabilityFloat() {
       animate={{ opacity: hidden ? 0 : 1, x: hidden ? 12 : 0, pointerEvents: hidden ? "none" : "auto" }}
       transition={{ duration: 0.4, ease: "easeOut" }}
     >
-      <div className="type-label mb-2" style={{ fontSize: "0.52rem", letterSpacing: "0.16em", color: "rgba(253,252,249,0.4)" }}>
+      <div className="type-label mb-2" style={{ fontSize: "0.6875rem", letterSpacing: "0.16em", color: "rgba(253,252,249,0.4)" }}>
         Disponibilités
       </div>
-      <div className="flex flex-col gap-2">
+      <div className="avail-rows flex flex-col gap-2">
         {SEASONS.map((s) => (
           <div key={s.year} className="flex items-center gap-2">
             <span className="text-xs font-semibold tabular-nums shrink-0" style={{ width: 32, color: "rgba(253,252,249,0.85)", fontFamily: "var(--font-body)" }}>
               {s.year}
             </span>
-            <div className="rounded-full overflow-hidden shrink-0" style={{ width: 44, height: 5, background: "rgba(253,252,249,0.12)" }}>
+            <div className="avail-bar rounded-full overflow-hidden shrink-0" style={{ width: 44, height: 5, background: "rgba(253,252,249,0.12)" }}>
               <motion.div
                 className="h-full rounded-full"
                 style={{ background: s.color, boxShadow: `0 0 8px ${s.glow}` }}
@@ -1585,10 +1585,10 @@ export default function Page() {
         <Prestations />
         <GuideBeaute />
         <Galerie />
+        <Avis />
         <ReelsSection />
         <InstagramCTA />
         <FAQ />
-        <Avis />
         <Acces />
       </main>
       <Footer />

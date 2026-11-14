@@ -10,7 +10,7 @@ const PAGE_URL = `${SITE_URL}/maquillage-mariage-rabat`;
 export const metadata: Metadata = {
   title: "Makeup Artist Rabat — Maquillage Mariée",
   description:
-    "Tyma, makeup artist professionnelle, se déplace à Rabat pour votre mariage. Essai inclus, keswa et takchita, 10+ ans d'expérience, 500+ mariées, note 4,8/5 sur Google.",
+    "Tyma, makeup artist professionnelle, se déplace à Rabat pour votre mariage. Essai inclus, keswa et takchita, 11+ ans d'expérience, 500+ mariées, note 4,8/5 sur Google.",
   alternates: { canonical: PAGE_URL },
   openGraph: {
     type: "website",
@@ -75,7 +75,7 @@ export default function RabatPage() {
             </h1>
             <p className="text-base leading-relaxed max-w-2xl mb-8" style={{ color: "var(--t1)" }}>
               Basée à Casablanca, Tyma se déplace régulièrement à Rabat pour le maquillage de mariée.
-              Plus de 10 ans d&apos;expérience, plus de 500 mariées sublimées, note 4,8/5 sur Google (44 avis).
+              Plus de 11 ans d&apos;expérience, plus de 500 mariées sublimées, note 4,8/5 sur Google (44 avis).
               Essai inclus, maquillage longue tenue conçu pour résister 12 à 16h, parfait pour les longues
               journées de mariage traditionnel.
             </p>

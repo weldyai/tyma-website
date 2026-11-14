@@ -10,7 +10,7 @@ const PAGE_URL = `${SITE_URL}/wedding-makeup-marrakech`;
 export const metadata: Metadata = {
   title: "Wedding Makeup Artist Marrakech — Destination Wedding",
   description:
-    "Tyma, professional makeup artist available in Marrakech for destination weddings. Moroccan bridal makeup (keswa, takchita) and modern glam, 10+ years experience, 500+ brides, 4.8/5 on Google.",
+    "Tyma, professional makeup artist available in Marrakech for destination weddings. Moroccan bridal makeup (keswa, takchita) and modern glam, 11+ years experience, 500+ brides, 4.8/5 on Google.",
   alternates: { canonical: PAGE_URL, languages: { en: PAGE_URL } },
   openGraph: {
     type: "website",
@@ -75,7 +75,7 @@ export default function MarrakechPage() {
                 <span style={{ color: "var(--gold)", fontStyle: "italic" }}>in Marrakech</span>
               </h1>
               <p className="text-base leading-relaxed max-w-2xl mb-8" style={{ color: "var(--t1)" }}>
-                Tyma is a professional makeup artist with 10+ years of experience, available in Marrakech
+                Tyma is a professional makeup artist with 11+ years of experience, available in Marrakech
                 for destination weddings. Over 500 brides styled, rated 4.8/5 on Google (44 reviews).
                 Trial session included, long-lasting makeup built to withstand heat and long celebration
                 hours — from morning to the last dance.
