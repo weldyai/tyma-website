@@ -43,3 +43,6 @@ Google Mode IA, ChatGPT, Gemini : Tyma citée à Casablanca et sur sa marque ; a
 
 ## Goal 14/11 (soldé)
 Facebook = `tymamakeupartist` (vérifié Chrome ; `beautytyma` indisponible), CLAUDE.md corrigé. Avatars Unsplash → monogrammes. tsc/build OK. NON commité : `app/page.tsx`, `CLAUDE.md`, `memory/`.
+
+## UX mobile + perf (14/11 soir)
+Commits 6c1f3e6 (UX mobile-first, 11+ ans), c21a7da (vidéo hero après load/selon écran, marquee via optimiseur Next), puis hero-in CSS (titre hero sans JS). Lighthouse mobile prod : perf 44→75 (simulation), réel devtools ~98 / LCP 1,8 s. Reste : contraste or (accord Brahim), aria/focus, hiérarchie CTA (WhatsApp > Appeler), GTM/FB pixel différés, GBP + Instagram « 11+ ans ». Photos = vraies modèles (ne pas les traiter de génériques).

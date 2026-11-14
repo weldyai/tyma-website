@@ -569,10 +569,10 @@ function Hero() {
             </motion.div>
 
             <h1 className="sr-only">Makeup Artist professionnelle à Casablanca — Maquillage mariage Maroc</h1>
-            <motion.p {...fadeUp(0.1)} aria-hidden="true" className="type-display mb-1" style={{ color: "rgba(253,252,249,0.9)" }}>
+            <p aria-hidden="true" className="type-display mb-1 hero-in" style={{ color: "rgba(253,252,249,0.9)", animationDelay: "0.1s" }}>
               Votre beauté
-            </motion.p>
-            <motion.p {...fadeUp(0.18)} aria-hidden="true" className="type-hero-italic mb-6">
+            </p>
+            <p aria-hidden="true" className="type-hero-italic mb-6 hero-in" style={{ animationDelay: "0.18s" }}>
               <AnimatedGradientText
                 colorFrom="#C09650"
                 colorVia="#EAD4A0"
@@ -581,7 +581,7 @@ function Hero() {
               >
                 entre des mains expertes
               </AnimatedGradientText>
-            </motion.p>
+            </p>
 
             {/* Portrait — mobile uniquement, sous le titre */}
             <motion.div {...fadeUp(0.22)} className="flex flex-col items-center md:hidden mb-8 gap-4">
