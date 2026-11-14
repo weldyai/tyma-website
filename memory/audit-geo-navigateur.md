@@ -25,6 +25,6 @@ Google (hl=fr, gl=ma), navigateur de Brahim connecté.
 | Google Mode IA | « bridal makeup artist Marrakech destination wedding » | ❌ absente (Amandine, Soukaina Farah…) |
 | ChatGPT (recherche web) | « meilleures maquilleuses de mariée à Casablanca » | ✅ 4e sur 6 (4,8/5 · 44 avis, lien « Site officiel ») ; classée sous des fiches à 5,0 |
 | Gemini | idem | ✅ citée avec détails issus du site (essai ~2 h, déplacement) et avis Google |
-| Perplexity | idem | non testé (compte requis) |
+| Perplexity (connecté) | idem | ✅ citée (« choix solide… longue tenue, glamour ou traditionnel »), source tymamakeupartist.com ; reprend l'ancien chiffre « 41 avis » (cache, sera mis à jour au prochain crawl) |
 
 Lecture : Casablanca et marque OK. Faiblesse = Rabat et Marrakech (villes hors base, peu d'avis locaux). Le classement dans ChatGPT suit la note/nombre d'avis Google : leviers = avis, liens croisés GBP/site/Instagram. Note : 3 conversations de test restent dans l'historique ChatGPT et Gemini de Brahim.
