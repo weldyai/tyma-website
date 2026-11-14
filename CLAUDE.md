@@ -40,7 +40,7 @@ Stack : Next.js 15 (App Router) + TypeScript + Tailwind + Framer Motion.
 - Instagram : https://www.instagram.com/tymabeauty/
 - Facebook : https://web.facebook.com/beautytyma/
 - Google Maps : https://maps.app.goo.gl/zGSM3uYb2D1Eqwiq8
-- Note Google : 4,8/5 · 41 avis
+- Note Google : 4,8/5 · 44 avis
 
 ## Chiffres clés
 - 11+ ans d'expérience
@@ -51,3 +51,6 @@ Stack : Next.js 15 (App Router) + TypeScript + Tailwind + Framer Motion.
 ## À faire
 - Remplacer la photo Unsplash du portrait (PortraitGlow, ligne ~375)
 - Remplacer les photos Unsplash de la galerie
+
+## Skills design partagés
+- `banner-design`, `brand`, `design`, `design-system`, `ui-styling` : liens symboliques vers `packages/design-commons/skills/` (ne pas dupliquer ; modifier à la source).
