@@ -3,26 +3,26 @@
 **Statut** : atteint (14/11/2026), non commité
 
 ## Objectif
-Appliquer les corrections de `memory/audit-seo-geo.md` + recherche GEO via Chrome.
+Solder le reste à faire côté code Tyma après l'audit SEO/GEO.
 
 ## Critère de fin
-1. Recherche GEO (Google, IA, Maps, annuaires) consignée dans `memory/audit-geo-navigateur.md`.
-2. Tous les points corrigeables de l'audit appliqués (hors : prix, vraies photos, GBP/citations = actions humaines listées).
-3. `npx tsc --noEmit` + `npm run build` verts ; revue indépendante OK.
+1. Lien Facebook unique et cohérent (code `layout.tsx`/`social-config.ts` = CLAUDE.md = vérifié en ligne).
+2. Avatars Unsplash des témoignages (`app/page.tsx:1204`, seule URL Unsplash restante) : remplacés par des initiales/monogrammes (aucune photo réelle fournie) — ou laissés si Brahim refuse.
+3. Vérifs techniques vertes : `npx tsc --noEmit`, `npm run build`, `/llms.txt`, `/sitemap.xml`, `/formation-maquillage-casablanca` = 200 en prod.
 
 ## Périmètre
-Autorisé : `app/`, `lib/`, `components/` (liens), `public/llms.txt`, `memory/`. Interdit : commit/push, `wedding-bg.mp4`, palette, polices, Opus, inventer des chiffres/prix/avis, actions GSC d'écriture.
+Autorisé : `app/page.tsx`, `app/layout.tsx`, `lib/social-config.ts`, `CLAUDE.md`, `memory/`. Interdit : commit/push, `wedding-bg.mp4`, palette, polices, Opus, prix, inventer avis/photos.
 
 ## Budget
-5 itérations, checkpoint à la 3 (Brahim a demandé zéro question : checkpoint = rapport, pas d'arrêt).
+5 itérations, checkpoint à la 3.
 
 ## Vérificateur
-tsc + build + sous-agent `qa-engineer`/`code-review`.
+tsc + build + curl prod ; `code-review` sur le diff.
 
 ## Journal
-(vide)
-1. (14/11) Recherche Chrome faite → `memory/audit-geo-navigateur.md`. Agent A (layout/sitemap/social) terminé ; agents B (pages villes) et C (page formation + footer) en cours. tsc KO provisoire sur pages Casablanca/Rabat (agent B en cours). À faire ensuite : 41→44 avis partout, page formation → s'appuyer sur Global Beauty Academy, llms.txt, tsc + build, revue QA.
-2. Corrections appliquées (agents A/B/C Sonnet), 41→44 avis partout (app, lib, llms.txt, CLAUDE.md), tsc OK, build OK. Revue QA : lang footer Marrakech corrigé, phrase « frais selon distance » retirée de la FAQ Rabat. Restent à valider par Brahim : lien Facebook (code = tymamakeupartist, CLAUDE.md = beautytyma), « propriétaire de Global Beauty Academy » (source : bio Instagram + fiche Google), alias « Tyma Beauty » conservé.
+1. Facebook vérifié via Chrome : `facebook.com/tymamakeupartist/` = page active (20 K followers, post il y a 3 jours, « Formatrice Global Beauty Academy ») ; `beautytyma` = contenu indisponible. Code déjà correct ; CLAUDE.md corrigé. Critère 1 atteint. Reste : avatars Unsplash (2), vérifs tsc/build/prod (3).
+
+2. Avatars témoignages : `img` Unsplash retirés, monogramme initiale (or/`--s1`) dans `app/page.tsx` ; 0 occurrence `unsplash` dans `app/`. tsc OK, build OK, prod : llms.txt / sitemap.xml / formation = 200.
 
 ## Résultat
-Critère atteint. Non fait (action humaine ou donnée manquante) : vraies photos (Unsplash), citations externes, soumission sitemap GSC, test ChatGPT/Gemini.
+Critère atteint. Non commité (attente accord). Reste hors code : GBP, vraies photos portrait/galerie si besoin, suivi GSC ~5/12.

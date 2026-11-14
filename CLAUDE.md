@@ -38,7 +38,7 @@ Stack : Next.js 15 (App Router) + TypeScript + Tailwind + Framer Motion.
 ## Contacts réels
 - WhatsApp/Tél : +212 6 94 86 36 46
 - Instagram : https://www.instagram.com/tymabeauty/
-- Facebook : https://web.facebook.com/beautytyma/
+- Facebook : https://www.facebook.com/tymamakeupartist/
 - Google Maps : https://maps.app.goo.gl/zGSM3uYb2D1Eqwiq8
 - Note Google : 4,8/5 · 44 avis
 

@@ -180,21 +180,18 @@ const TESTIMONIALS = [
     role: "Mariée · Casablanca",
     stars: 5,
     text: "Tyma a transformé mon look le jour de mon mariage. Tous mes invités étaient époustouflés. Le niveau de détail est incomparable.",
-    img: "photo-1438761681033-6461ffad8d80",
   },
   {
     name: "Imane K.",
     role: "Modèle · Rabat",
     stars: 5,
     text: "Professionnelle, créative, à l'écoute. Mon shooting était parfait grâce à elle. Elle maîtrise parfaitement comment le maquillage réagit sous les lumières studio.",
-    img: "photo-1531746020798-e6953c6e8e04",
   },
   {
     name: "Nadia R.",
     role: "Cliente · Fès",
     stars: 5,
     text: "J'ai pris des cours avec Tyma et j'ai appris en 2 séances ce que je n'avais pas réussi à apprendre seule en des années. Pédagogie exceptionnelle.",
-    img: "photo-1544005313-94ddf0286df2",
   },
 ];
 
@@ -1200,11 +1197,13 @@ function Avis() {
                 <Stars n={t.stars} />
                 <p className="text-sm leading-relaxed mt-4 flex-1" style={{ color: "var(--t1)" }}>{t.text}</p>
                 <div className="flex items-center gap-3 mt-6 pt-5" style={{ borderTop: "1px solid var(--glass-border)" }}>
-                  <img
-                    src={`https://images.unsplash.com/${t.img}?w=60&h=60&q=80&fit=crop&crop=faces`}
-                    alt={t.name}
-                    className="w-10 h-10 rounded-full object-cover"
-                  />
+                  <div
+                    aria-hidden="true"
+                    className="w-10 h-10 rounded-full flex items-center justify-center text-sm"
+                    style={{ background: "var(--s1)", border: "1px solid var(--gold)", color: "var(--gold)", fontFamily: "var(--font-display)", fontWeight: 300 }}
+                  >
+                    {t.name.charAt(0)}
+                  </div>
                   <div>
                     <div className="text-sm font-semibold" style={{ color: "var(--t0)", fontFamily: "var(--font-display)" }}>{t.name}</div>
                     <div className="text-xs" style={{ color: "var(--t2)" }}>{t.role}</div>

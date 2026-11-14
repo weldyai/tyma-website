@@ -40,3 +40,6 @@ Google Mode IA, ChatGPT, Gemini : Tyma citée à Casablanca et sur sa marque ; a
 ## Entretien (26/10)
 `node_modules` et `.next` supprimés (1,1 Go → 75 Mo) : `npm install` pour reprendre.
 `architecte.md` passé de opus à sonnet (règle : Opus seulement avec l'accord de Brahim).
+
+## Goal 14/11 (soldé)
+Facebook = `tymamakeupartist` (vérifié Chrome ; `beautytyma` indisponible), CLAUDE.md corrigé. Avatars Unsplash → monogrammes. tsc/build OK. NON commité : `app/page.tsx`, `CLAUDE.md`, `memory/`.
