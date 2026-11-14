@@ -472,6 +472,25 @@ function Hero() {
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const videoY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
 
+  const [videoMode, setVideoMode] = useState<"none" | "desktop" | "mobile">("none");
+
+  useEffect(() => {
+    const conn = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
+    if (conn?.saveData) return;
+    let timer: ReturnType<typeof setTimeout>;
+    const start = () => {
+      timer = setTimeout(() => {
+        setVideoMode(window.matchMedia("(min-width: 768px)").matches ? "desktop" : "mobile");
+      }, 300);
+    };
+    if (document.readyState === "complete") start();
+    else window.addEventListener("load", start, { once: true });
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("load", start);
+    };
+  }, []);
+
   useEffect(() => {
     // iOS Safari n'autorise l'autoplay que si l'attribut muted est posé sur le DOM, pas juste la prop React
     for (const v of [desktopVideoRef.current, mobileVideoRef.current]) {
@@ -480,7 +499,7 @@ function Hero() {
       v.setAttribute("muted", "");
       v.play().catch(() => {});
     }
-  }, []);
+  }, [videoMode]);
 
   return (
     <section
@@ -491,27 +510,36 @@ function Hero() {
     >
       {/* ── Vidéo mariage — fond hero ── */}
       <div className="absolute inset-0 pointer-events-none">
-        {/* Desktop : parallax */}
-        <motion.video
-          ref={desktopVideoRef}
-          autoPlay muted loop playsInline preload="auto"
-          poster="/wedding-bg-poster.jpg"
-          className="absolute inset-0 w-full h-full object-cover hidden md:block"
-          style={{ y: videoY, filter: "saturate(0.75) brightness(0.75)", scale: 1.08 }}
-        >
-          <source src="/wedding-bg.mp4" type='video/mp4; codecs="vp09.00.10.08"' />
-          <source src="/wedding-bg-h264.mp4" type='video/mp4; codecs="avc1.640028"' />
-        </motion.video>
+        {/* Poster immédiat (léger), la vidéo se charge après le load */}
+        <div
+          className="absolute inset-0 w-full h-full bg-cover bg-center"
+          style={{ backgroundImage: "url(/wedding-bg-poster.jpg)", filter: "saturate(0.7) brightness(0.68)" }}
+        />
+        {/* Desktop : parallax (chargée uniquement sur écran large) */}
+        {videoMode === "desktop" && (
+          <motion.video
+            ref={desktopVideoRef}
+            autoPlay muted loop playsInline preload="auto"
+            poster="/wedding-bg-poster.jpg"
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{ y: videoY, filter: "saturate(0.75) brightness(0.75)", scale: 1.08 }}
+          >
+            <source src="/wedding-bg.mp4" type='video/mp4; codecs="vp09.00.10.08"' />
+            <source src="/wedding-bg-h264.mp4" type='video/mp4; codecs="avc1.640028"' />
+          </motion.video>
+        )}
         {/* Mobile : fixe, encodage H.264 léger pour la 4G */}
-        <video
-          ref={mobileVideoRef}
-          autoPlay muted loop playsInline preload="auto"
-          poster="/wedding-bg-poster.jpg"
-          className="absolute inset-0 w-full h-full object-cover md:hidden"
-          style={{ filter: "saturate(0.7) brightness(0.68)" }}
-        >
-          <source src="/wedding-bg-mobile.mp4" type='video/mp4; codecs="avc1.640028"' />
-        </video>
+        {videoMode === "mobile" && (
+          <video
+            ref={mobileVideoRef}
+            autoPlay muted loop playsInline preload="auto"
+            poster="/wedding-bg-poster.jpg"
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{ filter: "saturate(0.7) brightness(0.68)" }}
+          >
+            <source src="/wedding-bg-mobile.mp4" type='video/mp4; codecs="avc1.640028"' />
+          </video>
+        )}
         <div className="absolute inset-0" style={{ background: "rgba(8,5,3,0.52)" }} />
         <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 70% 50% at 60% 50%, rgba(192,150,80,0.06) 0%, transparent 70%)" }} />
       </div>
@@ -659,7 +687,7 @@ function GalleryPhotoMarquee() {
             className="mx-4 rounded-xl overflow-hidden shrink-0"
             style={{ width: 240, height: 310, boxShadow: "0 12px 32px rgba(12,10,7,0.15)" }}
           >
-            <img src={src} alt="Maquillage mariée par Tyma, makeup artist à Casablanca" className="w-full h-full object-cover object-top" loading="lazy" />
+            <img src={`/_next/image?url=${encodeURIComponent(src)}&w=640&q=75`} alt="Maquillage mariée par Tyma, makeup artist à Casablanca" width={240} height={310} className="w-full h-full object-cover object-top" loading="lazy" decoding="async" />
           </div>
         ))}
       </div>
