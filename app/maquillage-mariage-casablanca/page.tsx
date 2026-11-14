@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { LandingHeader } from "@/components/LandingHeader";
 import { LandingFooter } from "@/components/LandingFooter";
+import Link from "next/link";
 import { WHATSAPP, PHONE_TEL } from "@/lib/social-config";
 
 const SITE_URL = "https://www.tymamakeupartist.com";
@@ -26,7 +27,7 @@ const jsonLd = {
   "name": "Maquillage Mariée à Casablanca",
   "serviceType": "Maquillage de mariage",
   "areaServed": { "@type": "City", "name": "Casablanca" },
-  "provider": { "@type": "LocalBusiness", "name": "Tyma Makeup Artist", "url": SITE_URL },
+  "provider": { "@id": "https://www.tymamakeupartist.com/#business" },
   "url": PAGE_URL,
 };
 
@@ -39,11 +40,28 @@ const breadcrumbLd = {
   ],
 };
 
+const FAQS = [
+  { q: "Combien de temps dure l'essai maquillage mariée ?", a: "La séance d'essai dure environ 2h. Elle permet d'ajuster le look sous différentes lumières avant le jour J." },
+  { q: "Tyma se déplace-t-elle pour le maquillage de mariée à Casablanca ?", a: "Oui, Tyma se déplace à domicile ou sur le lieu de l'événement à Casablanca et ses environs." },
+  { q: "Combien de temps tient le maquillage de mariée ?", a: "Le maquillage est conçu pour tenir de 12 à 16h, de quoi traverser une longue journée de mariage traditionnel." },
+];
+
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": FAQS.map((f) => ({
+    "@type": "Question",
+    "name": f.q,
+    "acceptedAnswer": { "@type": "Answer", "text": f.a },
+  })),
+};
+
 export default function CasablancaPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
 
       <LandingHeader />
 
@@ -57,7 +75,7 @@ export default function CasablancaPage() {
             </h1>
             <p className="text-base leading-relaxed max-w-2xl mb-8" style={{ color: "var(--t1)" }}>
               Tyma est makeup artist professionnelle à Casablanca depuis plus de 10 ans, spécialisée
-              dans le maquillage de mariée. Plus de 500 mariées sublimées, note 4,8/5 sur Google (41 avis).
+              dans le maquillage de mariée. Plus de 500 mariées sublimées, note 4,8/5 sur Google (44 avis).
               Essai inclus, déplacement à domicile ou sur le lieu de l&apos;événement à Casablanca et ses environs,
               maquillage longue tenue conçu pour résister 12 à 16h — du matin jusqu&apos;au bout de la nuit.
             </p>
@@ -89,15 +107,47 @@ export default function CasablancaPage() {
           </div>
         </section>
 
+        <section className="py-20" style={{ background: "var(--s1)" }}>
+          <div className="max-w-4xl mx-auto px-5">
+            <h2 className="type-section mb-6" style={{ color: "var(--t0)", fontSize: "clamp(2rem, 3.5vw, 3rem)" }}>
+              Le mariage marocain à Casablanca
+            </h2>
+            <p className="text-base leading-relaxed max-w-3xl" style={{ color: "var(--t1)" }}>
+              Un mariage marocain à Casablanca s&apos;étale sur toute une journée, avec la keswa, la takchita et
+              plusieurs changements de tenues. Tyma adapte le maquillage à chaque passage de la mariée. Après une
+              séance d&apos;essai d&apos;environ 2h, elle se déplace à domicile ou sur le lieu de réception le jour J.
+              Découvrez les <Link href="/tarifs" className="underline" style={{ color: "var(--gold)" }}>tarifs</Link> ou la{" "}
+              <Link href="/formation-maquillage-casablanca" className="underline" style={{ color: "var(--gold)" }}>formation maquillage à Casablanca</Link>.
+            </p>
+          </div>
+        </section>
+
         <section className="py-20" style={{ background: "var(--s0)" }}>
           <div className="max-w-3xl mx-auto px-5 text-center">
             <h2 className="type-section mb-4" style={{ color: "var(--t0)", fontSize: "clamp(2rem, 3.5vw, 3rem)" }}>
               Réservez votre date à Casablanca
             </h2>
             <p className="text-sm mb-8" style={{ color: "var(--t2)" }}>
-              Les dates de mariage se réservent plusieurs mois à l&apos;avance. Contactez Tyma dès que votre date est fixée.
+              Les dates de mariage se réservent plusieurs mois à l&apos;avance. Contactez Tyma dès que votre date est fixée.{" "}
+              Consultez les <Link href="/tarifs" className="underline" style={{ color: "var(--gold)" }}>tarifs</Link>.
             </p>
             <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn-gold">Contacter sur WhatsApp</a>
+          </div>
+        </section>
+
+        <section className="py-20" style={{ background: "var(--s1)" }}>
+          <div className="max-w-4xl mx-auto px-5">
+            <h2 className="type-section mb-8" style={{ color: "var(--t0)", fontSize: "clamp(2rem, 3.5vw, 3rem)" }}>
+              Questions fréquentes
+            </h2>
+            <div className="grid gap-5">
+              {FAQS.map((f) => (
+                <div key={f.q} className="service-card !p-6 !rounded-2xl">
+                  <h3 className="text-base font-semibold mb-2" style={{ color: "var(--t0)", fontFamily: "var(--font-display)" }}>{f.q}</h3>
+                  <p className="text-sm leading-relaxed" style={{ color: "var(--t1)" }}>{f.a}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
       </main>

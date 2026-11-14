@@ -22,40 +22,11 @@ const SITE_URL = "https://www.tymamakeupartist.com";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Tyma Makeup Artist Casablanca — Note 4,8/5 (41 avis)",
+    default: "Tyma Makeup Artist Casablanca — Note 4,8/5 (44 avis)",
     template: "%s | Tyma Makeup Artist",
   },
   description:
-    "Tyma, makeup artist n°1 à Casablanca — note 4,8/5 (41 avis Google). Maquillage mariée, soirée, shooting photo et cours privés à Casablanca, Rabat, Marrakech. 10+ ans d'expérience, 500+ clientes satisfaites.",
-  keywords: [
-    "maquilleuse professionnelle Maroc",
-    "makeup artist Maroc",
-    "maquillage mariée Maroc",
-    "maquillage mariée Casablanca",
-    "maquillage mariée Rabat",
-    "maquillage mariée Marrakech",
-    "maquillage soirée Maroc",
-    "maquillage shooting photo Maroc",
-    "cours maquillage professionnel Maroc",
-    "maquilleuse domicile Maroc",
-    "Tyma Makeup Artist",
-    "Tyma Makeup Artist Maroc",
-    "meilleure maquilleuse Maroc",
-    "maquillage événement Maroc",
-    "maquilleuse mariage Casablanca",
-    "maquilleuse mariage Rabat",
-    "beauty artist Maroc",
-    "maquillage haut de gamme Maroc",
-    "maquillage luxe Maroc",
-    "maquilleuse mariée marocaine",
-    "négafa Casablanca",
-    "wedding planner Maroc maquillage",
-    "styliste mariage Maroc",
-    "mariage marocain international",
-    "maquilleuse mariée marocaine étranger",
-    "maquillage keswa takchita",
-    "maquilleuse diaspora marocaine",
-  ],
+    "Tyma, makeup artist à Casablanca — note 4,8/5 (44 avis Google). Maquillage mariée, soirée, shooting photo et cours privés à Casablanca, Rabat, Marrakech. 10+ ans d'expérience, 500+ clientes satisfaites.",
   authors: [{ name: "Tyma Makeup Artist" }],
   creator: "Tyma Makeup Artist",
   publisher: "Tyma Makeup Artist",
@@ -81,7 +52,7 @@ export const metadata: Metadata = {
     siteName: "Tyma Makeup Artist",
     title: "Tyma Makeup Artist | Maquilleuse Professionnelle au Maroc",
     description:
-      "Makeup artist n°1 à Casablanca, note 4,8/5 (41 avis Google). Mariages, soirées, shootings, cours privés. 10+ ans d'expérience, 500+ clientes satisfaites.",
+      "Makeup artist à Casablanca — note 4,8/5 (44 avis Google). Mariages, soirées, shootings, cours privés. 10+ ans d'expérience, 500+ clientes satisfaites.",
     images: [
       {
         url: "/og-image.jpg",
@@ -102,8 +73,8 @@ export const metadata: Metadata = {
     "geo.region": "MA",
     "geo.placename": "Maroc",
     "geo.country": "Morocco",
-    "geo.position": "33.5731;-7.5898",
-    "ICBM": "33.5731, -7.5898",
+    "geo.position": "33.5270151;-7.6495311",
+    "ICBM": "33.5270151, -7.6495311",
   },
 };
 
@@ -137,10 +108,14 @@ const jsonLd = {
       "@id": `${SITE_URL}/#business`,
       "name": "Tyma Makeup Artist",
       "alternateName": ["Tyma Makeup Artist Casablanca", "Tyma Beauty", "Tyma Makeup"],
-      "description": "Tyma est une maquilleuse professionnelle au Maroc avec plus de 10 ans d'expérience. Elle est spécialisée en maquillage de mariée avec essai inclus, maquillage de soirée et gala, maquillage pour shooting photo, et cours de maquillage privés. Elle a maquillé plus de 500 clientes satisfaites et dispose d'une note de 4,8/5 sur Google (41 avis). Tyma se déplace à domicile ou reçoit en studio au Maroc.",
+      "description": "Tyma est une maquilleuse professionnelle au Maroc avec plus de 10 ans d'expérience. Elle est spécialisée en maquillage de mariée avec essai inclus, maquillage de soirée et gala, maquillage pour shooting photo, et cours de maquillage privés. Elle a maquillé plus de 500 clientes satisfaites et dispose d'une note de 4,8/5 sur Google (44 avis). Tyma se déplace à domicile ou reçoit en studio au Maroc.",
       "url": SITE_URL,
       "telephone": "+212694863646",
+      "image": `${SITE_URL}/og-image.jpg`,
+      "logo": `${SITE_URL}/og-image.jpg`,
       "priceRange": "$$",
+      "knowsLanguage": ["fr", "ar", "en"],
+      "availableLanguage": ["fr", "ar", "en"],
       "currenciesAccepted": "MAD",
       "paymentAccepted": "Cash, Virement bancaire",
       "address": {
@@ -175,7 +150,7 @@ const jsonLd = {
       ],
       "sameAs": [
         "https://www.instagram.com/tymabeauty/",
-        "https://web.facebook.com/tymamakeupartist/",
+        "https://www.facebook.com/tymamakeupartist/",
         "https://www.tiktok.com/@tyma.beauty",
         "https://www.youtube.com/@TymaBeauty",
         "https://maps.app.goo.gl/zGSM3uYb2D1Eqwiq8",
@@ -225,33 +200,10 @@ const jsonLd = {
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "4.8",
-        "reviewCount": "41",
+        "reviewCount": "44",
         "bestRating": "5",
         "worstRating": "1",
       },
-      "review": [
-        {
-          "@type": "Review",
-          "author": { "@type": "Person", "name": "Sara B." },
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-          "reviewBody": "Tyma a transformé mon look le jour de mon mariage. Tous mes invités étaient époustouflés. Je recommande à 1000 %.",
-          "datePublished": "2024-06-15",
-        },
-        {
-          "@type": "Review",
-          "author": { "@type": "Person", "name": "Imane K." },
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-          "reviewBody": "Professionnelle, créative, à l'écoute. Mon shooting photo était parfait grâce à elle.",
-          "datePublished": "2024-09-03",
-        },
-        {
-          "@type": "Review",
-          "author": { "@type": "Person", "name": "Nadia R." },
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-          "reviewBody": "Après mon cours particulier avec Tyma, je me maquille comme une vraie pro. Ses techniques sont incroyables.",
-          "datePublished": "2025-01-20",
-        },
-      ],
     },
     {
       "@type": "Person",
@@ -330,7 +282,7 @@ const jsonLd = {
           "name": "Qui est le meilleur makeup artist à Casablanca ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Tyma Makeup Artist est l'une des maquilleuses professionnelles les mieux notées de Casablanca, avec une note de 4,8/5 sur 41 avis Google et plus de 500 mariées maquillées en 10+ ans d'expérience. Elle est spécialisée en maquillage de mariée (keswa, takchita, essai inclus), soirée et shooting photo, et se déplace à Casablanca, Rabat et Marrakech.",
+            "text": "Tyma Makeup Artist est l'une des maquilleuses professionnelles les mieux notées de Casablanca, avec une note de 4,8/5 sur 44 avis Google et plus de 500 mariées maquillées en 10+ ans d'expérience. Elle est spécialisée en maquillage de mariée (keswa, takchita, essai inclus), soirée et shooting photo, et se déplace à Casablanca, Rabat et Marrakech.",
           },
         },
         {

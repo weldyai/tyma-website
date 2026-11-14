@@ -109,8 +109,8 @@ const FAQ_ITEMS = [
   {
     q: "Qui est le meilleur makeup artist à Casablanca ?",
     qd: "شكون هو أحسن makeup artist فكازا ؟",
-    a: "Je fais partie des maquilleuses professionnelles les mieux notées de Casablanca : 4,8/5 sur 41 avis Google et plus de 500 mariées maquillées en 10+ ans d'expérience. Je suis spécialisée en maquillage de mariée (keswa, takchita, essai inclus), soirée et shooting photo, et je me déplace à Casablanca, Rabat et Marrakech.",
-    ad: "كنعتبر من أحسن المكياجيرات المحترفات فكازا: نوط 4,8/5 على 41 تقييم فگوگل وكثر من 500 عروسة درت ليهم المكياج فكثر من 10 سنين تجربة. متخصصة فمكياج العروسة (قسوة، تكشيطة، تجربة مشمولة)، السهرة والتصوير، وكنتنقل لكازا، الرباط ومراكش.",
+    a: "Je fais partie des maquilleuses professionnelles les mieux notées de Casablanca : 4,8/5 sur 44 avis Google et plus de 500 mariées maquillées en 10+ ans d'expérience. Je suis spécialisée en maquillage de mariée (keswa, takchita, essai inclus), soirée et shooting photo, et je me déplace à Casablanca, Rabat et Marrakech.",
+    ad: "كنعتبر من أحسن المكياجيرات المحترفات فكازا: نوط 4,8/5 على 44 تقييم فگوگل وكثر من 500 عروسة درت ليهم المكياج فكثر من 10 سنين تجربة. متخصصة فمكياج العروسة (قسوة، تكشيطة، تجربة مشمولة)، السهرة والتصوير، وكنتنقل لكازا، الرباط ومراكش.",
   },
   {
     q: "Combien de temps dure une séance maquillage mariage ?",

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { LandingHeader } from "@/components/LandingHeader";
 import { LandingFooter } from "@/components/LandingFooter";
+import Link from "next/link";
 import { WHATSAPP, PHONE_TEL } from "@/lib/social-config";
 
 const SITE_URL = "https://www.tymamakeupartist.com";
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
   title: "Wedding Makeup Artist Marrakech — Destination Wedding",
   description:
     "Tyma, professional makeup artist available in Marrakech for destination weddings. Moroccan bridal makeup (keswa, takchita) and modern glam, 10+ years experience, 500+ brides, 4.8/5 on Google.",
-  alternates: { canonical: PAGE_URL },
+  alternates: { canonical: PAGE_URL, languages: { en: PAGE_URL } },
   openGraph: {
     type: "website",
     url: PAGE_URL,
@@ -26,7 +27,7 @@ const jsonLd = {
   "name": "Bridal Makeup in Marrakech",
   "serviceType": "Wedding makeup",
   "areaServed": { "@type": "City", "name": "Marrakech" },
-  "provider": { "@type": "LocalBusiness", "name": "Tyma Makeup Artist", "url": SITE_URL },
+  "provider": { "@id": "https://www.tymamakeupartist.com/#business" },
   "url": PAGE_URL,
 };
 
@@ -39,70 +40,109 @@ const breadcrumbLd = {
   ],
 };
 
+const FAQS = [
+  { q: "Is Tyma available for destination weddings in Marrakech?", a: "Yes, Tyma is available in Marrakech for destination weddings, including riad and hotel weddings." },
+  { q: "Is a trial session included?", a: "Yes, a trial session of about 2h is included so the look can be perfected under different lighting before your wedding day." },
+  { q: "How long does the bridal makeup last?", a: "The makeup is built to last 12 to 16 hours, through heat, dancing and long wedding days." },
+];
+
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": FAQS.map((f) => ({
+    "@type": "Question",
+    "name": f.q,
+    "acceptedAnswer": { "@type": "Answer", "text": f.a },
+  })),
+};
+
 export default function MarrakechPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
 
-      <LandingHeader homeLabel="Home" />
+      <div lang="en">
+        <LandingHeader homeLabel="Home" />
 
-      <main>
-        <section className="pt-40 pb-20" style={{ background: "var(--s0)" }}>
-          <div className="max-w-4xl mx-auto px-5">
-            <p className="type-label mb-4" style={{ color: "var(--gold)" }}>Marrakech</p>
-            <h1 className="type-section mb-6" style={{ color: "var(--t0)" }}>
-              Wedding Makeup Artist<br />
-              <span style={{ color: "var(--gold)", fontStyle: "italic" }}>in Marrakech</span>
-            </h1>
-            <p className="text-base leading-relaxed max-w-2xl mb-8" style={{ color: "var(--t1)" }}>
-              Tyma is a professional makeup artist with 10+ years of experience, available in Marrakech
-              for destination weddings. Over 500 brides styled, rated 4.8/5 on Google (41 reviews).
-              Trial session included, long-lasting makeup built to withstand heat and long celebration
-              hours — from morning to the last dance.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn-gold">WhatsApp</a>
-              <a href={PHONE_TEL} className="btn-outline">Call</a>
+        <main>
+          <section className="pt-40 pb-20" style={{ background: "var(--s0)" }}>
+            <div className="max-w-4xl mx-auto px-5">
+              <p className="type-label mb-4" style={{ color: "var(--gold)" }}>Marrakech</p>
+              <h1 className="type-section mb-6" style={{ color: "var(--t0)" }}>
+                Wedding Makeup Artist<br />
+                <span style={{ color: "var(--gold)", fontStyle: "italic" }}>in Marrakech</span>
+              </h1>
+              <p className="text-base leading-relaxed max-w-2xl mb-8" style={{ color: "var(--t1)" }}>
+                Tyma is a professional makeup artist with 10+ years of experience, available in Marrakech
+                for destination weddings. Over 500 brides styled, rated 4.8/5 on Google (44 reviews).
+                Trial session included, long-lasting makeup built to withstand heat and long celebration
+                hours — from morning to the last dance.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn-gold">WhatsApp</a>
+                <a href={PHONE_TEL} className="btn-outline">Call</a>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        <section className="py-20" style={{ background: "var(--s1)" }}>
-          <div className="max-w-4xl mx-auto px-5">
-            <h2 className="type-section mb-8" style={{ color: "var(--t0)", fontSize: "clamp(2rem, 3.5vw, 3rem)" }}>
-              Why brides choose Tyma in Marrakech
-            </h2>
-            <div className="grid sm:grid-cols-2 gap-5">
-              {[
-                { title: "Built for Marrakech heat", text: "Long-lasting, waterproof, HD products designed to hold through heat, dancing and long wedding days — 12 to 16 hours of wear." },
-                { title: "Moroccan bridal expertise", text: "Full mastery of traditional Moroccan bridal codes — keswa, takchita, multiple outfit changes throughout the night." },
-                { title: "Modern glam or traditional", text: "From soft natural glam to rich oriental glamour — a look tailored to your style, available for riad and hotel weddings." },
-                { title: "Trial before the big day", text: "A trial session (~2h) to perfect the look under different lighting before your wedding day." },
-              ].map((f) => (
-                <div key={f.title} className="service-card !p-6 !rounded-2xl">
-                  <h3 className="text-base font-semibold mb-2" style={{ color: "var(--t0)", fontFamily: "var(--font-display)" }}>{f.title}</h3>
-                  <p className="text-sm leading-relaxed" style={{ color: "var(--t1)" }}>{f.text}</p>
-                </div>
-              ))}
+          <section className="py-20" style={{ background: "var(--s1)" }}>
+            <div className="max-w-4xl mx-auto px-5">
+              <h2 className="type-section mb-8" style={{ color: "var(--t0)", fontSize: "clamp(2rem, 3.5vw, 3rem)" }}>
+                Why brides choose Tyma in Marrakech
+              </h2>
+              <div className="grid sm:grid-cols-2 gap-5">
+                {[
+                  { title: "Built for Marrakech heat", text: "Long-lasting, waterproof, HD products designed to hold through heat, dancing and long wedding days — 12 to 16 hours of wear." },
+                  { title: "Moroccan bridal expertise", text: "Full mastery of traditional Moroccan bridal codes — keswa, takchita, multiple outfit changes throughout the night." },
+                  { title: "Modern glam or traditional", text: "From soft natural glam to rich oriental glamour — a look tailored to your style, available for riad and hotel weddings." },
+                  { title: "Trial before the big day", text: "A trial session (~2h) to perfect the look under different lighting before your wedding day." },
+                ].map((f) => (
+                  <div key={f.title} className="service-card !p-6 !rounded-2xl">
+                    <h3 className="text-base font-semibold mb-2" style={{ color: "var(--t0)", fontFamily: "var(--font-display)" }}>{f.title}</h3>
+                    <p className="text-sm leading-relaxed" style={{ color: "var(--t1)" }}>{f.text}</p>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        <section className="py-20" style={{ background: "var(--s0)" }}>
-          <div className="max-w-3xl mx-auto px-5 text-center">
-            <h2 className="type-section mb-4" style={{ color: "var(--t0)", fontSize: "clamp(2rem, 3.5vw, 3rem)" }}>
-              Book your Marrakech wedding date
-            </h2>
-            <p className="text-sm mb-8" style={{ color: "var(--t2)" }}>
-              Wedding dates are booked months in advance. Get in touch as soon as your date is confirmed.
-            </p>
-            <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn-gold">Contact on WhatsApp</a>
-          </div>
-        </section>
-      </main>
+          <section className="py-20" style={{ background: "var(--s0)" }}>
+            <div className="max-w-3xl mx-auto px-5 text-center">
+              <h2 className="type-section mb-4" style={{ color: "var(--t0)", fontSize: "clamp(2rem, 3.5vw, 3rem)" }}>
+                Book your Marrakech wedding date
+              </h2>
+              <p className="text-sm mb-8" style={{ color: "var(--t2)" }}>
+                Wedding dates are booked months in advance. Get in touch as soon as your date is confirmed.{" "}
+                See our <Link href="/tarifs" className="underline" style={{ color: "var(--gold)" }}>pricing</Link>.
+              </p>
+              <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn-gold">Contact on WhatsApp</a>
+            </div>
+          </section>
 
-      <LandingFooter />
+          <section className="py-20" style={{ background: "var(--s1)" }}>
+            <div className="max-w-4xl mx-auto px-5">
+              <h2 className="type-section mb-8" style={{ color: "var(--t0)", fontSize: "clamp(2rem, 3.5vw, 3rem)" }}>
+                Frequently asked questions
+              </h2>
+              <div className="grid gap-5">
+                {FAQS.map((f) => (
+                  <div key={f.q} className="service-card !p-6 !rounded-2xl">
+                    <h3 className="text-base font-semibold mb-2" style={{ color: "var(--t0)", fontFamily: "var(--font-display)" }}>{f.q}</h3>
+                    <p className="text-sm leading-relaxed" style={{ color: "var(--t1)" }}>{f.a}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        </main>
+
+      </div>
+
+      <div lang="fr">
+        <LandingFooter />
+      </div>
 
       <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="wa-float" aria-label="WhatsApp">
         <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">

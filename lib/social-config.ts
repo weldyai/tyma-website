@@ -30,7 +30,7 @@ export const SOCIAL_NETWORKS: SocialNetwork[] = [
   {
     id: 'facebook',
     name: 'Facebook',
-    url: 'https://web.facebook.com/tymamakeupartist/',
+    url: 'https://www.facebook.com/tymamakeupartist/',
     color: '#1877F2',
     bgHover: 'rgba(24,119,242,0.1)',
     active: true,
@@ -99,5 +99,5 @@ export const WHATSAPP = 'https://wa.me/212694863646'
 export const GOOGLE_MAPS = 'https://maps.app.goo.gl/zGSM3uYb2D1Eqwiq8'
 export const GOOGLE_REVIEWS = 'https://share.google/rV2vUc5ApuF8PzcMI'
 export const GOOGLE_RATING = 4.8
-export const GOOGLE_REVIEW_COUNT = 41
+export const GOOGLE_REVIEW_COUNT = 44
 export const PHONE_TEL = 'tel:+212694863646'

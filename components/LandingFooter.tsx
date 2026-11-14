@@ -32,6 +32,7 @@ export function LandingFooter() {
             <a href="/">Accueil</a>
             <a href="/tarifs">Tarifs</a>
             <a href="/maquillage-mariage-casablanca">Mariage Casablanca</a>
+            <a href="/formation-maquillage-casablanca">Formation maquillage</a>
             <a href="/maquillage-mariage-rabat">Mariage Rabat</a>
             <a href="/wedding-makeup-marrakech">Marrakech Wedding</a>
             <a href={GOOGLE_MAPS} target="_blank" rel="noopener noreferrer">Casablanca, Maroc</a>
